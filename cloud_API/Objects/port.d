@@ -1,0 +1,13 @@
+.\objects\port.o: rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F\port.c
+.\objects\port.o: .\rtos\freertos_9.0.0\Source\include\FreeRTOS.h
+.\objects\port.o: E:\KEIL\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\port.o: E:\KEIL\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\port.o: ..\cloud_API\FreeRTOSConfig.h
+.\objects\port.o: .\rtos\freertos_9.0.0\Source\include\projdefs.h
+.\objects\port.o: .\rtos\freertos_9.0.0\Source\include\portable.h
+.\objects\port.o: .\rtos\freertos_9.0.0\Source\include\deprecated_definitions.h
+.\objects\port.o: .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F\portmacro.h
+.\objects\port.o: .\rtos\freertos_9.0.0\Source\include\mpu_wrappers.h
+.\objects\port.o: .\rtos\freertos_9.0.0\Source\include\task.h
+.\objects\port.o: .\rtos\freertos_9.0.0\Source\include\list.h
+.\objects\port.o: rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F\fsl_tickless_generic.h

@@ -1,0 +1,28 @@
+--cpu=Cortex-M4.fp
+".\objects\main.o"
+".\objects\pin_mux.o"
+".\objects\board.o"
+".\objects\clock_config.o"
+".\objects\fsl_io.o"
+".\objects\fsl_log.o"
+".\objects\fsl_str.o"
+".\objects\fsl_debug_console.o"
+".\objects\fsl_assert.o"
+".\objects\startup_mk64f12.o"
+".\objects\system_mk64f12.o"
+".\objects\fsl_ftfx_controller.o"
+".\objects\fsl_ftfx_flash.o"
+".\objects\fsl_ftfx_cache.o"
+".\objects\fsl_ftfx_flexnvm.o"
+".\objects\fsl_gpio.o"
+".\objects\fsl_common.o"
+".\objects\fsl_clock.o"
+".\objects\fsl_uart.o"
+".\objects\fsl_smc.o"
+".\objects\flash_api.o"
+".\objects\md5.o"
+".\objects\crc16.o"
+--diag_suppress 6314 --strict --scatter ".\bootloader.scf"
+--remove --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\bootloader.map" -o .\Objects\bootloader.axf

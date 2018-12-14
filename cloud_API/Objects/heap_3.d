@@ -1,0 +1,13 @@
+.\objects\heap_3.o: rtos\freertos_9.0.0\Source\portable\MemMang\heap_3.c
+.\objects\heap_3.o: E:\KEIL\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\heap_3.o: .\rtos\freertos_9.0.0\Source\include\FreeRTOS.h
+.\objects\heap_3.o: E:\KEIL\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\heap_3.o: E:\KEIL\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\heap_3.o: ..\cloud_API\FreeRTOSConfig.h
+.\objects\heap_3.o: .\rtos\freertos_9.0.0\Source\include\projdefs.h
+.\objects\heap_3.o: .\rtos\freertos_9.0.0\Source\include\portable.h
+.\objects\heap_3.o: .\rtos\freertos_9.0.0\Source\include\deprecated_definitions.h
+.\objects\heap_3.o: .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F\portmacro.h
+.\objects\heap_3.o: .\rtos\freertos_9.0.0\Source\include\mpu_wrappers.h
+.\objects\heap_3.o: .\rtos\freertos_9.0.0\Source\include\task.h
+.\objects\heap_3.o: .\rtos\freertos_9.0.0\Source\include\list.h
