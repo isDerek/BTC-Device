@@ -42,6 +42,7 @@
 .\objects\heartbeat_thread.o: .\middleware\lwip_2.0.0\src\include\lwip/def.h
 .\objects\heartbeat_thread.o: .\middleware\lwip_2.0.0\src\include\lwip/ip4_addr.h
 .\objects\heartbeat_thread.o: .\middleware\lwip_2.0.0\src\include\lwip/ip6_addr.h
+.\objects\heartbeat_thread.o: .\cJSON\cJSON.h
 .\objects\heartbeat_thread.o: .\globalParams\apiParams.h
 .\objects\heartbeat_thread.o: .\middleware\lwip_2.0.0\src\include\lwip\api.h
 .\objects\heartbeat_thread.o: .\middleware\lwip_2.0.0\src\include\lwip/netbuf.h

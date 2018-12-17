@@ -42,13 +42,13 @@
 .\objects\network_thread.o: .\middleware\lwip_2.0.0\src\include\lwip/def.h
 .\objects\network_thread.o: .\middleware\lwip_2.0.0\src\include\lwip/ip4_addr.h
 .\objects\network_thread.o: .\middleware\lwip_2.0.0\src\include\lwip/ip6_addr.h
+.\objects\network_thread.o: .\cJSON\cJSON.h
 .\objects\network_thread.o: .\middleware\lwip_2.0.0\src\include\lwip\api.h
 .\objects\network_thread.o: .\middleware\lwip_2.0.0\src\include\lwip/netbuf.h
 .\objects\network_thread.o: .\middleware\lwip_2.0.0\src\include\lwip/pbuf.h
 .\objects\network_thread.o: .\middleware\lwip_2.0.0\src\include\lwip/err.h
 .\objects\network_thread.o: .\middleware\lwip_2.0.0\src\include\lwip/sys.h
 .\objects\network_thread.o: .\globalParams\apiParams.h
-.\objects\network_thread.o: .\cJSON\cJSON.h
 .\objects\network_thread.o: ..\cloud_API\sensor.h
 .\objects\network_thread.o: ..\cloud_API\board.h
 .\objects\network_thread.o: ..\cloud_API\clock_config.h
@@ -56,3 +56,4 @@
 .\objects\network_thread.o: .\driver_api\K64_api.h
 .\objects\network_thread.o: .\devices\MK64F12\drivers\fsl_flash.h
 .\objects\network_thread.o: .\devices\MK64F12\drivers\fsl_i2c.h
+.\objects\network_thread.o: .\source\flashLayout.h

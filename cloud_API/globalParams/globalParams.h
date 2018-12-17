@@ -1,5 +1,5 @@
 #include "ip_addr.h"
-
+#include "cJSON.h"
 #define SOCKET_OUT_BUFFER_SIZE 256
 #define SOCKET_IN_BUFFER_SIZE (4096+256)
 
@@ -17,8 +17,30 @@ typedef struct _OTAInfo {
 		char versionSN[33];   
 } OTAInfo;
 
-extern char versionSN [33];
+typedef struct _BTCInfo {
+		int apiId;
+		char msgId[10]; 
+		char mac[12];
+		int configBuffer[10];
+		char oledOneLine[16];
+		char oledSecondLine[16];
+		char oledThirdLine[16];
+	  char oledForthLine[16];
+		int module;
+} BTCInfo;
 
+typedef struct _EventFlag {
+    bool heatbeatFlag;
+    bool getLatestFWFromServerFlag; 
+	  bool firstConnectFlag ; 
+		bool downLoadFinshFWFromServerFlag;
+
+} SystemEventHandle;
+
+extern BTCInfo btcInfo;
+extern char versionSN [33];
+extern int respCode;
+extern OTAInfo otaInfo;
 extern SocketInfo socketInfo;
 extern struct netconn *tcpsocket;
 extern ip_addr_t server_ipaddr;

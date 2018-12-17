@@ -50,11 +50,14 @@ int main(void)
 //	uint32_t a[4]={1,2,3,4};
 //	program_flash(0x30000, a, sizeof(a));
 //	while(1){
+//		getADCValue();
 //	}
 		if(sys_thread_new("socket_connect", connect_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
 					LWIP_ASSERT("socket_init(): Task creation failed.", 0);
 		if(sys_thread_new("heartBeatTheard", heartBeat_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
-					LWIP_ASSERT("heartBeatTheard(): Task creation failed.", 0);				
+					LWIP_ASSERT("heartBeatTheard(): Task creation failed.", 0);
+		if(sys_thread_new("workHandleTheard", workHandle_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
+					LWIP_ASSERT("workHandleTheard(): Task creation failed.", 0);			
 		/* Will not get here unless a task calls vTaskEndScheduler ()*/
   	vTaskStartScheduler();	 		
 }

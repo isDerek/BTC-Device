@@ -14,6 +14,9 @@
 #define API_Heartpack_Response "{\"apiId\":%d}"
 #define API_PushDevice_Response "{\"apiId\":%d,\"deviceStatus\":%d,\"portStatus\":[%d,%d]}"
 #define API_OTA_Response "{\"apiId\":%d,\"versionSN\":%s,\"blockOffset\":%d,\"blockSize\":%d}"
+
+#define CMD_RESP_otaUpdate           "{\"msgId\":\"%s\",\"apiId\":%d,\"respCode\":%d}"
+
 #define API_AUTH_mac "be454f62e720"
 #define API_AUTH_reconnect0 0
 #define API_AUTH_reconnect1 1
@@ -36,6 +39,7 @@
 #define ERR_Server 5
 #define ERR_Success 100
 
+
 enum API_apiId
 {
     API_apiId_AUTH = 1U, 
@@ -46,7 +50,7 @@ enum API_apiId
 };
 enum API_module
 {
-    API_module_port = 1U, 
+//    API_module_port = 1U, 
     API_module_pwm = 2U,      
     API_module_rgb = 3U,      
     API_module_oled = 4U,      
@@ -58,3 +62,5 @@ enum API_module
 		API_module_button = 15U,
 		API_module_ota = 100U,
 };
+
+

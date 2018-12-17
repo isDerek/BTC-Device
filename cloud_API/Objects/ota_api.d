@@ -49,3 +49,4 @@
 .\objects\ota_api.o: .\middleware\lwip_2.0.0\src\include\lwip/def.h
 .\objects\ota_api.o: .\middleware\lwip_2.0.0\src\include\lwip/ip4_addr.h
 .\objects\ota_api.o: .\middleware\lwip_2.0.0\src\include\lwip/ip6_addr.h
+.\objects\ota_api.o: .\cJSON\cJSON.h

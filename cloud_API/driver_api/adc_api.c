@@ -65,6 +65,6 @@ void adc_init(void)
 int getADCValue(void)
 {
 	ADC16_SetChannelConfig(DEMO_ADC16_BASE, DEMO_ADC16_CHANNEL_GROUP, &adc16ChannelConfigStruct);
-//	printf("ADC Value: %d\r\n", g_Adc16ConversionValue);
+	printf("ADC Value: %d\r\n", g_Adc16ConversionValue);
 	return g_Adc16ConversionValue;
 }

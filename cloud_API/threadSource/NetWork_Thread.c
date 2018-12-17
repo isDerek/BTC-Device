@@ -6,11 +6,14 @@
 #include "board.h"
 #include "K64_api.h"
 #include "fsl_i2c.h"
+#include "flashLayout.h"
 
 u16_t port = 55551;
 struct netconn *tcpsocket;
 struct netbuf  *TCPNetbuf;
 SocketInfo socketInfo;
+extern OTAInfo otaInfo;
+BTCInfo btcInfo;
 
 volatile bool showFlag = false;
 bool server_connect_Flag = false;
@@ -21,87 +24,11 @@ float lx;//¹âÁÁµÈ¼¶
 uint32_t persure;
 float temp, hum;
 int red, green, blue;
+int respCode;
 
-
-volatile bool ConnectAuthorizationFlag = false;
-
-void switchSensorModule(int module, char *msgId, cJSON* json_config)
-{
-	int led;
-	char *out;
-	cJSON *json_config_object;
-	int updatedDutycycle;
-	switch(module)
-	{
-		case API_module_port://port
-			led = (cJSON_GetArrayItem(json_config,0)->valueint)^1;
-			GPIO_WritePinOutput(BOARD_LED_RED_GPIO, BOARD_LED_RED_GPIO_PIN, led);
-			sprintf(socketInfo.outBuffer, API_SendData_Response, API_SendData, ERR_Success, msgId);			
-			break;
-		case API_module_pwm://pwm
-			updatedDutycycle = cJSON_GetArrayItem(json_config,0)->valueint;
-			FTM_updata(80);
-			FTM_updata(updatedDutycycle);
-			sprintf(socketInfo.outBuffer, API_SendData_Response, API_SendData, ERR_Success, msgId);				
-			break;
-		case API_module_rgb://rgb
-			RGB_Show();			
-			I2C_WriteByte(I2C0, 0X38, (0x00), 1);
-			red = cJSON_GetArrayItem(json_config,0)->valueint;
-			green = cJSON_GetArrayItem(json_config,1)->valueint;
-			blue = cJSON_GetArrayItem(json_config,2)->valueint;
-			RGB_Run(red, green, blue);
-			sprintf(socketInfo.outBuffer, API_SendData_Response, API_SendData, ERR_Success, msgId);				
-			break;
-		case API_module_oled://oled
-			API_OLED_Clear();
-			for(int j=0; j<4; j++)
-			{
-				json_config_object = cJSON_GetArrayItem(json_config,j);
-				out = json_config_object->valuestring;																		
-				OLED_ShowStr(0, j*2, (uint8_t*)out);
-			}
-			sprintf(socketInfo.outBuffer, API_SendData_Response, API_SendData, ERR_Success, msgId);				
-			break;
-		case API_module_accel://G
-			ADXL345_Show();
-			ADXL345_Run(); 
-			sprintf(socketInfo.outBuffer, API_SendData_Response_ThreeData, API_SendData, ERR_Success, x, y, z, msgId);		
-			break;
-		case API_module_light://L
-			VEML6030_Show();
-			VEML6030_Run();								
-			sprintf(socketInfo.outBuffer, API_SendData_Response_IntData, API_SendData, ERR_Success, (int)(lx), msgId);			
-			break;
-		case API_module_uv://UV
-			VEML6075_Show();
-			VEML6075_Run();
-			sprintf(socketInfo.outBuffer, API_SendData_Response_TwoData, API_SendData, ERR_Success, UVA_data, UVB_data, msgId);			
-			break;							
-		case API_module_temphumi://H&T
-			HDC1050_Show();
-			HDC1050_Run();
-			sprintf(socketInfo.outBuffer, API_SendData_Response_TwoData, API_SendData, ERR_Success, (int)temp, (int)hum, msgId);			
-			break;
-		case API_module_pressure://P
-			SPL06001_Show();
-			SPL06001_Run();
-			sprintf(socketInfo.outBuffer, API_SendData_Response_FloatData, API_SendData, ERR_Success, (float)(persure/100), msgId);
-			break;
-		case API_module_ota://ota								
-			sprintf(socketInfo.outBuffer, API_SendData_Response, API_SendData, ERR_Success, msgId);									
-			break;
-	}
-	netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);
-}
-	/* Parse text to JSON, then render back to text, and print! */
 void parseRecvMsgInfo(char *text)
 {
-	int apiId;
-	char *msgId;
-	int module;
-	int respCode;
-  cJSON *json, *json_data,*json_config;	
+  cJSON *json, *json_data;	
 	json=cJSON_Parse(text);
     if (!json)
 		{
@@ -109,64 +36,57 @@ void parseRecvMsgInfo(char *text)
     } 
 		else 
 		{
-			apiId = cJSON_GetObjectItem( json , "apiId")->valueint;
-//			printf("apiId is =%d\r\n",apiId);				
-
-			msgId = cJSON_GetObjectItem( json , "msgId")->valuestring;
-//			printf("msgId is =%s\r\n",msgId);				
+			btcInfo.apiId = cJSON_GetObjectItem( json , "apiId")->valueint;
+			
+			sprintf(btcInfo.msgId,"%s",cJSON_GetObjectItem(json,"msgId")->valuestring);		
 					
 			respCode = cJSON_GetObjectItem( json , "respCode")->valueint;
-//			printf("respCode is =%d\r\n",respCode);
 						
 			json_data = cJSON_GetObjectItem( json , "data");
 			if(json_data)
 			{
-				module = cJSON_GetObjectItem( json_data , "module")->valueint; 
-				printf("module is =%d\r\n",module);
-				json_config = cJSON_GetObjectItem( json_data , "config");
-			}
-			if(apiId == API_apiId_AUTH){
-				if(respCode == ERR_Success)
-				{	
-					ConnectAuthorizationFlag = true;
-					GPIO_WritePinOutput(BOARD_LED_GREEN_GPIO, BOARD_LED_GREEN_GPIO_PIN, 0);
-					printf("Connection authorization response completed.\r\n");
+				cJSON *array;
+				btcInfo.module = cJSON_GetObjectItem( json_data , "module")->valueint; 
+				array = cJSON_GetObjectItem( json_data , "config");
+				if(!array){
+					
 				}
 				else
-				{	
-					ConnectAuthorizationFlag = false;
-					GPIO_WritePinOutput(BOARD_LED_GREEN_GPIO, BOARD_LED_GREEN_GPIO_PIN, 1);
-					printf("Connection authorization response failed.\r\n");
-				}				
-			}
-			else if (apiId == API_apiId_SendData){
-				switchSensorModule(module, msgId, json_config);
-			}
-			else if (apiId ==  API_apiId_Heartpack){
-				if(respCode == ERR_Success)
-				{																
-					printf("Heartbeat packet response completed.\r\n");
-				}					
-			}
-			else if (apiId == API_apiId_PushDevice){
-				if(respCode == ERR_Success)
-				{	
-					printf("Device push response completed.\r\n");
-				}
-				else
-				{	
-					printf("Device push response failed.\r\n");
-				}				
-			}
-			else if (apiId == API_apiId_OTA){
-				if(respCode == ERR_Success)
-				{	
-					printf("OTA upgrade response completed.\r\n");
-				}
-				else
-				{	
-					printf("OTA upgrade response failed.\r\n");
-				}				
+				{
+					int size = cJSON_GetArraySize(array);
+					if(btcInfo.module == 4)
+					{
+						for(int i = 0; i<size ; i++)
+						{
+							cJSON *object = cJSON_GetArrayItem(array,i);
+							if( i == 0)
+							{
+								sprintf(btcInfo.oledOneLine,"%s",object->valuestring);									
+							}
+							else if(i == 1)
+							{
+								sprintf(btcInfo.oledSecondLine,"%s",object->valuestring);
+							}
+							else if(i == 2)
+							{
+								sprintf(btcInfo.oledThirdLine,"%s",object->valuestring);
+							}
+							else if(i == 3)
+							{
+								sprintf(btcInfo.oledForthLine,"%s",object->valuestring);
+							}					
+						}					
+					}
+					else
+					{
+						for(int i = 0; i<size ; i++)
+						{
+							cJSON *object = cJSON_GetArrayItem(array,i);
+							btcInfo.configBuffer[i] = object->valueint;
+//							printf("buffer[%d] = %d\n\r",i,btcInfo.configBuffer[i]);
+						}					
+					}					
+				}		
 			}
 		}
 		cJSON_Delete(json);
@@ -192,10 +112,10 @@ void recvMsgHandle(void)
 				netbuf_delete(buf);   	
 			}
 	}
-		else 
-		{
-			netbuf_delete(buf);
-		}	
+	else 
+	{
+		netbuf_delete(buf);
+	}	
 }
 
 void connect_thread(void *arg)
@@ -220,7 +140,6 @@ void connect_thread(void *arg)
 		}
 		else
 		{
-			//Connection authorization
 			if(!ConnectAuthorizationFlag)
 			{
 				sprintf(socketInfo.outBuffer, API_AUTH_Sendpack, API_AUTH, versionSN, API_AUTH_mac, API_AUTH_reconnect0);			
@@ -230,6 +149,6 @@ void connect_thread(void *arg)
 			}	
 			recvMsgHandle();
 		}
-		vTaskDelay(100);
+		vTaskDelay(1000);
 	}
 }

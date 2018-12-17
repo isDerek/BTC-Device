@@ -1,6 +1,6 @@
 Dependencies for Project 'cloud_API', Target 'cloud_API': (DO NOT MODIFY !)
 F (.\FreeRTOSConfig.h)(0x5BAF3706)()
-F (.\BTC_API.c)(0x5C130963)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\btc_api.o --omf_browse .\objects\btc_api.crf --depend .\objects\btc_api.d)
+F (.\BTC_API.c)(0x5C17630E)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\btc_api.o --omf_browse .\objects\btc_api.crf --depend .\objects\btc_api.d)
 I (.\driver_api\K64_api.h)(0x5C0F28A5)
 I (E:\KEIL\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (.\devices\MK64F12\drivers\fsl_flash.h)(0x5C0F13DC)
@@ -17,7 +17,7 @@ I (.\CMSIS\Include\cmsis_armcc.h)(0x5B99E76C)
 I (.\devices\MK64F12\system_MK64F12.h)(0x58C49DCE)
 I (.\devices\MK64F12\MK64F12_features.h)(0x58C49DCE)
 I (.\devices\MK64F12\drivers\fsl_clock.h)(0x5B764A64)
-I (.\threadSource\thread_api.h)(0x5C079FAB)
+I (.\threadSource\thread_api.h)(0x5C176494)
 I (sensor.h)(0x5C07A3CE)
 I (.\middleware\lwip_2.0.0\src\include\lwip\api.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/opt.h)(0x5BAF31CC)
@@ -3869,7 +3869,7 @@ I (E:\KEIL\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (E:\KEIL\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (E:\KEIL\ARM\ARMCC\include\math.h)(0x588B8344)
 I (sensor.h)(0x5C07A3CE)
-I (.\globalParams\globalParams.h)(0x5C0F5406)
+I (.\globalParams\globalParams.h)(0x5C1787E4)
 I (.\middleware\lwip_2.0.0\src\include\lwip\ip_addr.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/opt.h)(0x5BAF31CC)
 I (.\middleware\lwip_2.0.0\port\lwipopts.h)(0x58C49DCE)
@@ -3894,6 +3894,7 @@ I (E:\KEIL\ARM\ARMCC\include\inttypes.h)(0x588B8344)
 I (.\middleware\lwip_2.0.0\src\include\lwip/def.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/ip4_addr.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/ip6_addr.h)(0x58C49DCE)
+I (.\cJSON\cJSON.h)(0x5A0E4588)
 F (.\sensor.h)(0x5C07A3CE)()
 F (.\md5\md5Std.h)(0x5C0F2A13)()
 F (.\md5\mdk_test.cpp)(0x5AD024F2)(--cpp -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\mdk_test.o --omf_browse .\objects\mdk_test.crf --depend .\objects\mdk_test.d)
@@ -3979,7 +3980,7 @@ I (.\devices\MK64F12\drivers\fsl_clock.h)(0x5B764A64)
 I (.\devices\MK64F12\drivers\fsl_port.h)(0x5B7FC18A)
 I (driver_api\K64_api.h)(0x5C0F28A5)
 I (.\devices\MK64F12\drivers\fsl_flash.h)(0x5C0F13DC)
-I (.\globalParams\globalParams.h)(0x5C0F5406)
+I (.\globalParams\globalParams.h)(0x5C1787E4)
 I (.\middleware\lwip_2.0.0\src\include\lwip\ip_addr.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/opt.h)(0x5BAF31CC)
 I (.\middleware\lwip_2.0.0\port\lwipopts.h)(0x58C49DCE)
@@ -4005,6 +4006,7 @@ I (E:\KEIL\ARM\ARMCC\include\inttypes.h)(0x588B8344)
 I (.\middleware\lwip_2.0.0\src\include\lwip/def.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/ip4_addr.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/ip6_addr.h)(0x58C49DCE)
+I (.\cJSON\cJSON.h)(0x5A0E4588)
 F (.\driver_api\ftm_api.c)(0x5C0E0F90)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\ftm_api.o --omf_browse .\objects\ftm_api.crf --depend .\objects\ftm_api.d)
 I (.\devices\MK64F12\drivers\fsl_ftm.h)(0x5B7FC868)
 I (.\devices\MK64F12\drivers\fsl_common.h)(0x5C00A38B)
@@ -4090,7 +4092,7 @@ I (.\devices\MK64F12\drivers\fsl_flash.h)(0x5C0F13DC)
 I (..\cloud_API\board.h)(0x5C0726E0)
 I (..\cloud_API\clock_config.h)(0x58C49DCE)
 I (.\devices\MK64F12\drivers\fsl_gpio.h)(0x5C0A0963)
-F (.\driver_api\adc_api.c)(0x5C0F5053)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\adc_api.o --omf_browse .\objects\adc_api.crf --depend .\objects\adc_api.d)
+F (.\driver_api\adc_api.c)(0x5C175CE7)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\adc_api.o --omf_browse .\objects\adc_api.crf --depend .\objects\adc_api.d)
 I (driver_api\K64_api.h)(0x5C0F28A5)
 I (E:\KEIL\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (.\devices\MK64F12\drivers\fsl_flash.h)(0x5C0F13DC)
@@ -4127,10 +4129,10 @@ I (.\devices\MK64F12\MK64F12_features.h)(0x58C49DCE)
 I (.\devices\MK64F12\drivers\fsl_clock.h)(0x5B764A64)
 I (E:\KEIL\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (.\source\flashLayout.h)(0x5C0F310E)
-F (.\globalParams\globalParams.h)(0x5C0F5406)()
-F (.\globalParams\apiParams.h)(0x5C0F55F7)()
-F (.\threadSource\NetWork_Thread.c)(0x5C107918)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\network_thread.o --omf_browse .\objects\network_thread.crf --depend .\objects\network_thread.d)
-I (.\globalParams\globalParams.h)(0x5C0F5406)
+F (.\globalParams\globalParams.h)(0x5C1787E4)()
+F (.\globalParams\apiParams.h)(0x5C17854A)()
+F (.\threadSource\NetWork_Thread.c)(0x5C1787F8)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\network_thread.o --omf_browse .\objects\network_thread.crf --depend .\objects\network_thread.d)
+I (.\globalParams\globalParams.h)(0x5C1787E4)
 I (.\middleware\lwip_2.0.0\src\include\lwip\ip_addr.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/opt.h)(0x5BAF31CC)
 I (.\middleware\lwip_2.0.0\port\lwipopts.h)(0x58C49DCE)
@@ -4170,13 +4172,13 @@ I (E:\KEIL\ARM\ARMCC\include\inttypes.h)(0x588B8344)
 I (.\middleware\lwip_2.0.0\src\include\lwip/def.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/ip4_addr.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/ip6_addr.h)(0x58C49DCE)
+I (.\cJSON\cJSON.h)(0x5A0E4588)
 I (.\middleware\lwip_2.0.0\src\include\lwip\api.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/netbuf.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/pbuf.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/err.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/sys.h)(0x58C49DCE)
-I (.\globalParams\apiParams.h)(0x5C0F55F7)
-I (.\cJSON\cJSON.h)(0x5A0E4588)
+I (.\globalParams\apiParams.h)(0x5C17854A)
 I (..\cloud_API\sensor.h)(0x5C07A3CE)
 I (..\cloud_API\board.h)(0x5C0726E0)
 I (..\cloud_API\clock_config.h)(0x58C49DCE)
@@ -4184,8 +4186,9 @@ I (.\devices\MK64F12\drivers\fsl_gpio.h)(0x5C0A0963)
 I (.\driver_api\K64_api.h)(0x5C0F28A5)
 I (.\devices\MK64F12\drivers\fsl_flash.h)(0x5C0F13DC)
 I (.\devices\MK64F12\drivers\fsl_i2c.h)(0x5BFCB59F)
+I (.\source\flashLayout.h)(0x5C0F310E)
 F (.\threadSource\HeartBeat_Thread.c)(0x5C0792C7)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\heartbeat_thread.o --omf_browse .\objects\heartbeat_thread.crf --depend .\objects\heartbeat_thread.d)
-I (.\globalParams\globalParams.h)(0x5C0F5406)
+I (.\globalParams\globalParams.h)(0x5C1787E4)
 I (.\middleware\lwip_2.0.0\src\include\lwip\ip_addr.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/opt.h)(0x5BAF31CC)
 I (.\middleware\lwip_2.0.0\port\lwipopts.h)(0x58C49DCE)
@@ -4225,19 +4228,76 @@ I (E:\KEIL\ARM\ARMCC\include\inttypes.h)(0x588B8344)
 I (.\middleware\lwip_2.0.0\src\include\lwip/def.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/ip4_addr.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/ip6_addr.h)(0x58C49DCE)
-I (.\globalParams\apiParams.h)(0x5C0F55F7)
+I (.\cJSON\cJSON.h)(0x5A0E4588)
+I (.\globalParams\apiParams.h)(0x5C17854A)
 I (.\middleware\lwip_2.0.0\src\include\lwip\api.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/netbuf.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/pbuf.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/err.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/sys.h)(0x58C49DCE)
-F (.\threadSource\thread_api.h)(0x5C079FAB)()
+F (.\threadSource\thread_api.h)(0x5C176494)()
+F (.\threadSource\workHandle.c)(0x5C178729)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\workhandle.o --omf_browse .\objects\workhandle.crf --depend .\objects\workhandle.d)
+I (.\globalParams\globalParams.h)(0x5C1787E4)
+I (.\middleware\lwip_2.0.0\src\include\lwip\ip_addr.h)(0x58C49DCE)
+I (.\middleware\lwip_2.0.0\src\include\lwip/opt.h)(0x5BAF31CC)
+I (.\middleware\lwip_2.0.0\port\lwipopts.h)(0x58C49DCE)
+I (.\middleware\lwip_2.0.0\src\include\lwip/debug.h)(0x58C49DCE)
+I (.\middleware\lwip_2.0.0\src\include\lwip/arch.h)(0x58C49DCE)
+I (.\middleware\lwip_2.0.0\port\arch/cc.h)(0x58C49DCE)
+I (.\middleware\lwip_2.0.0\port\arch/sys_arch.h)(0x58C49DCE)
+I (.\devices\MK64F12\utilities\fsl_debug_console.h)(0x58D87338)
+I (.\devices\MK64F12\drivers\fsl_common.h)(0x5C00A38B)
+I (E:\KEIL\ARM\ARMCC\include\assert.h)(0x588B8344)
+I (E:\KEIL\ARM\ARMCC\include\stdbool.h)(0x588B8344)
+I (E:\KEIL\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (E:\KEIL\ARM\ARMCC\include\string.h)(0x588B8344)
+I (.\devices\MK64F12\fsl_device_registers.h)(0x58C49DCE)
+I (.\devices\MK64F12\MK64F12.h)(0x5B723834)
+I (.\CMSIS\Include\core_cm4.h)(0x5B99E76C)
+I (.\CMSIS\Include\cmsis_version.h)(0x5B99E76C)
+I (.\CMSIS\Include\cmsis_compiler.h)(0x5B99E76C)
+I (.\CMSIS\Include\cmsis_armcc.h)(0x5B99E76C)
+I (.\devices\MK64F12\system_MK64F12.h)(0x58C49DCE)
+I (.\devices\MK64F12\MK64F12_features.h)(0x58C49DCE)
+I (.\devices\MK64F12\drivers\fsl_clock.h)(0x5B764A64)
+I (E:\KEIL\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (.\rtos\freertos_9.0.0\Source\include\FreeRTOS.h)(0x58C49DCE)
+I (E:\KEIL\ARM\ARMCC\include\stddef.h)(0x588B8344)
+I (..\cloud_API\FreeRTOSConfig.h)(0x5BAF3706)
+I (.\rtos\freertos_9.0.0\Source\include\projdefs.h)(0x58C49DCE)
+I (.\rtos\freertos_9.0.0\Source\include\portable.h)(0x58C49DCE)
+I (.\rtos\freertos_9.0.0\Source\include\deprecated_definitions.h)(0x58C49DCE)
+I (.\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x58C49DCE)
+I (.\rtos\freertos_9.0.0\Source\include\mpu_wrappers.h)(0x58C49DCE)
+I (.\rtos\freertos_9.0.0\Source\include\task.h)(0x58C49DCE)
+I (.\rtos\freertos_9.0.0\Source\include\list.h)(0x58C49DCE)
+I (.\rtos\freertos_9.0.0\Source\include\queue.h)(0x58C49DCE)
+I (.\rtos\freertos_9.0.0\Source\include\semphr.h)(0x58C49DCE)
+I (E:\KEIL\ARM\ARMCC\include\inttypes.h)(0x588B8344)
+I (.\middleware\lwip_2.0.0\src\include\lwip/def.h)(0x58C49DCE)
+I (.\middleware\lwip_2.0.0\src\include\lwip/ip4_addr.h)(0x58C49DCE)
+I (.\middleware\lwip_2.0.0\src\include\lwip/ip6_addr.h)(0x58C49DCE)
+I (.\cJSON\cJSON.h)(0x5A0E4588)
+I (.\globalParams\apiParams.h)(0x5C17854A)
+I (.\middleware\lwip_2.0.0\src\include\lwip\api.h)(0x58C49DCE)
+I (.\middleware\lwip_2.0.0\src\include\lwip/netbuf.h)(0x58C49DCE)
+I (.\middleware\lwip_2.0.0\src\include\lwip/pbuf.h)(0x58C49DCE)
+I (.\middleware\lwip_2.0.0\src\include\lwip/err.h)(0x58C49DCE)
+I (.\middleware\lwip_2.0.0\src\include\lwip/sys.h)(0x58C49DCE)
+I (..\cloud_API\sensor.h)(0x5C07A3CE)
+I (..\cloud_API\board.h)(0x5C0726E0)
+I (..\cloud_API\clock_config.h)(0x58C49DCE)
+I (.\devices\MK64F12\drivers\fsl_gpio.h)(0x5C0A0963)
+I (.\driver_api\K64_api.h)(0x5C0F28A5)
+I (.\devices\MK64F12\drivers\fsl_flash.h)(0x5C0F13DC)
+I (.\devices\MK64F12\drivers\fsl_i2c.h)(0x5BFCB59F)
+I (.\source\flashLayout.h)(0x5C0F310E)
 F (.\tools\delay.c)(0x5C07789C)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\delay.o --omf_browse .\objects\delay.crf --depend .\objects\delay.d)
 I (tools\tools.h)(0x5C0F2738)
 I (E:\KEIL\ARM\ARMCC\include\stdint.h)(0x588B8344)
 F (.\tools\tools.h)(0x5C0F2738)()
 F (.\tools\calculateBinSize.c)(0x5C0F1FE5)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\calculatebinsize.o --omf_browse .\objects\calculatebinsize.crf --depend .\objects\calculatebinsize.d)
-F (.\ota\ota_api.c)(0x5C130B85)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\ota_api.o --omf_browse .\objects\ota_api.crf --depend .\objects\ota_api.d)
+F (.\ota\ota_api.c)(0x5C130C33)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\ota_api.o --omf_browse .\objects\ota_api.crf --depend .\objects\ota_api.d)
 I (ota\ota.h)(0x5C0F20B5)
 I (.\source\flashLayout.h)(0x5C0F310E)
 I (.\crc16\lib_crc16.h)(0x5C0F2B40)
@@ -4260,7 +4320,7 @@ I (.\devices\MK64F12\system_MK64F12.h)(0x58C49DCE)
 I (.\devices\MK64F12\MK64F12_features.h)(0x58C49DCE)
 I (.\devices\MK64F12\drivers\fsl_clock.h)(0x5B764A64)
 I (.\tools\tools.h)(0x5C0F2738)
-I (.\globalParams\globalParams.h)(0x5C0F5406)
+I (.\globalParams\globalParams.h)(0x5C1787E4)
 I (.\middleware\lwip_2.0.0\src\include\lwip\ip_addr.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/opt.h)(0x5BAF31CC)
 I (.\middleware\lwip_2.0.0\port\lwipopts.h)(0x58C49DCE)
@@ -4285,6 +4345,7 @@ I (E:\KEIL\ARM\ARMCC\include\inttypes.h)(0x588B8344)
 I (.\middleware\lwip_2.0.0\src\include\lwip/def.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/ip4_addr.h)(0x58C49DCE)
 I (.\middleware\lwip_2.0.0\src\include\lwip/ip6_addr.h)(0x58C49DCE)
+I (.\cJSON\cJSON.h)(0x5A0E4588)
 F (.\ota\ota.h)(0x5C0F20B5)()
 F (.\crc16\lib_crc16.h)(0x5C0F2B40)()
 F (.\crc16\crc16.c)(0x5C0F2B26)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\rtos\freertos_9.0.0\Source\include -I .\CMSIS\Include -I .\devices -I .\devices\MK64F12\drivers -I .\devices\MK64F12\utilities -I .\middleware\lwip_2.0.0 -I .\middleware\lwip_2.0.0\port -I .\middleware\lwip_2.0.0\port\arch -I .\middleware\lwip_2.0.0\src -I .\middleware\lwip_2.0.0\src\include -I .\middleware\lwip_2.0.0\src\include\lwip -I .\middleware\lwip_2.0.0\src\include\lwip\priv -I .\middleware\lwip_2.0.0\src\include\netif -I .\middleware\lwip_2.0.0\src\include\posix -I .\middleware\lwip_2.0.0\contrib\apps -I .\rtos\freertos_9.0.0\Source -I .\devices\MK64F12 -I .\startup -I ..\cloud_API -I .\rtos\freertos_9.0.0\Source\portable\RVDS\ARM_CM4F -I .\middleware\lwip_2.0.0\contrib\apps\ping -I .\middleware\lwip_2.0.0\src\include -I .\cJSON -I .\middleware\lwip\src\include\lwip -I .\middleware\lwip\src\include\lwip\prot -I .\driver_api -I .\globalParams -I .\tools -I .\threadSource -I .\ota -I .\md5 -I .\source -I .\crc16 --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186 -I.\RTE\_cloud_API-IE:\KEIL\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IE:\KEIL\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DMK64FN1M0xxx12 -DDEBUG -DCPU_MK64FN1M0VMD12 -DUSE_RTOS="1" -DPRINTF_ADVANCED_ENABLE="1" -DFSL_RTOS_FREE_RTOS -DFRDM_K64F -DFREEDOM-o .\objects\crc16.o --omf_browse .\objects\crc16.crf --depend .\objects\crc16.d)
