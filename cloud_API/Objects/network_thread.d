@@ -57,3 +57,6 @@
 .\objects\network_thread.o: .\devices\MK64F12\drivers\fsl_flash.h
 .\objects\network_thread.o: .\devices\MK64F12\drivers\fsl_i2c.h
 .\objects\network_thread.o: .\source\flashLayout.h
+.\objects\network_thread.o: .\crc16\lib_crc16.h
+.\objects\network_thread.o: .\ota\ota.h
+.\objects\network_thread.o: E:\KEIL\ARM\ARMCC\Bin\..\include\stdlib.h

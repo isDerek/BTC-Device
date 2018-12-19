@@ -113,6 +113,7 @@
 ".\objects\network_thread.o"
 ".\objects\heartbeat_thread.o"
 ".\objects\workhandle.o"
+".\objects\onesecondtimer_thread.o"
 ".\objects\delay.o"
 ".\objects\calculatebinsize.o"
 ".\objects\ota_api.o"

@@ -49,4 +49,5 @@ void ADXL345_Show(void);
 void ADXL345_Run(void);
 void sensorInit(void);
 
+void showUserDEF(void);
 #endif

@@ -13,7 +13,13 @@ The SPL06-002 device 7-bits address is 0x78*/
 #include <math.h>
 #include "sensor.h"
 #include "globalParams.h"
+#include "userConfig.h"
 #define OLED_I2C_ADDR   0x3D
+
+// OLED_WELCOME
+	BTCInfo btcInfo = {
+		.MAC_ADD = configMAC_ADDR,
+	};
 
 struct spl0601_calib_param_t {
 	int16_t c0;
@@ -566,8 +572,19 @@ void SPL06_001_Value(void)
 
 void OLED_Welcome(void)
 {
-	char *Welcome = "Welcome to use!";
-	OLED_ShowStr(0, 0, (uint8_t*)Welcome);
+	char *UserID = "UserID = ";
+	char *DeviceID = "DeviceID = ";
+	char *MAC_ADDRESS = "MAC_ADDRESS:";
+	char *MAC;
+	MAC = malloc(6);
+	sprintf(MAC,"%02x%02x%02x%02x%02x%02x",btcInfo.MAC_ADD[0],btcInfo.MAC_ADD[1],btcInfo.MAC_ADD[2],btcInfo.MAC_ADD[3],btcInfo.MAC_ADD[4],btcInfo.MAC_ADD[5]);
+//	printf("%02x%02x%02x%02x%02x%02x\n\r",loginInfo.MAC_ADD[0],loginInfo.MAC_ADD[1],loginInfo.MAC_ADD[2],loginInfo.MAC_ADD[3],loginInfo.MAC_ADD[4],loginInfo.MAC_ADD[5]);
+	API_OLED_Clear();
+	OLED_ShowStr(0, 0, (uint8_t*)UserID);
+	OLED_ShowStr(0, 2, (uint8_t*)DeviceID);
+	OLED_ShowStr(0, 4, (uint8_t*)MAC_ADDRESS);
+	OLED_ShowStr(0, 6, (uint8_t*)MAC);
+	free(MAC);
 }
 
 void HDC1050_Init(void)

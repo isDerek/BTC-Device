@@ -77,7 +77,7 @@ int erase_sector(uint32_t start)
   {
     /* Debug message for user. */
     /* Erase several sectors on upper pflash block where there is no code *///擦除 flash 上没有代码的扇区 
-    printf("\r\n Erase a sector of flash");
+//    printf("\r\n Erase a sector of flash");
 	}	
 	
 	
@@ -94,7 +94,7 @@ int erase_sector(uint32_t start)
     error_trap();
   }
   /* Print message for user. */
-  printf("\r\n Successfully Erased Sector 0x%x -> 0x%x\r\n", start, (start + SECTOR_SIZE));
+//  printf("\r\n Successfully Erased Sector 0x%x -> 0x%x\r\n", start, (start + SECTOR_SIZE));
 	return 1;
 }
 
@@ -127,7 +127,7 @@ int program_flash(uint32_t start, uint32_t *src, uint32_t lengthInBytes)
 			error_trap();
     }
   }
-	printf("\r\n Successfully Programmed and Verified Location 0x%x -> 0x%x \r\n", start,
-  (start + lengthInBytes));
+//	printf("\r\n Successfully Programmed and Verified Location 0x%x -> 0x%x \r\n", start,
+//  (start + lengthInBytes));
 	return 1;
 }

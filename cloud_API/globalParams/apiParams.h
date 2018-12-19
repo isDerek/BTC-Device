@@ -15,7 +15,10 @@
 #define API_PushDevice_Response "{\"apiId\":%d,\"deviceStatus\":%d,\"portStatus\":[%d,%d]}"
 #define API_OTA_Response "{\"apiId\":%d,\"versionSN\":%s,\"blockOffset\":%d,\"blockSize\":%d}"
 
+// test ota
+#define NOTIFY_REQ_updateVersion     "{\"apiId\":%d,\"versionSN\":\"%s\",\"blockOffset\":%d,\"blockSize\":%d}"
 #define CMD_RESP_otaUpdate           "{\"msgId\":\"%s\",\"apiId\":%d,\"respCode\":%d}"
+#define	NOTIFY_REQ_otaDeviceStatus	 "{\"apiId\":%d,\"deviceStatus\":%d}"	
 
 #define API_AUTH_mac "be454f62e720"
 #define API_AUTH_reconnect0 0

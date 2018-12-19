@@ -10,8 +10,9 @@
 
 #include "K64_api.h"
 #include "board.h"
-/* MAC address configuration. *///be 45 4f 62 e7 20
-#define configMAC_ADDR {0xbe, 0x45, 0x4f, 0x62, 0xe7, 0x20}
+#include "userConfig.h"
+///* MAC address configuration. *///be 45 4f 62 e7 20
+//#define configMAC_ADDR {0xbe, 0x45, 0x4f, 0x62, 0xe7, 0x20}
 /* Address of PHY interface. */
 #define EXAMPLE_PHY_ADDRESS BOARD_ENET0_PHY_ADDRESS
 /* System clock name. */

@@ -54,3 +54,4 @@
 .\objects\btc_api.o: clock_config.h
 .\objects\btc_api.o: .\devices\MK64F12\drivers\fsl_gpio.h
 .\objects\btc_api.o: pin_mux.h
+.\objects\btc_api.o: .\source\userConfig.h

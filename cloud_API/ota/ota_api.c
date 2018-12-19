@@ -76,6 +76,7 @@ void OTAInit(void)
 
 }
 
+
 void updateCode(void)
 {
     printf("update, system will be reset now, please wait...\r\n");

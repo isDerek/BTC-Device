@@ -10,6 +10,8 @@
 #include "fsl_common.h"
 #include "pin_mux.h"
 #include "clock_config.h"
+#include "userConfig.h"
+
 
 /*******************************************************************************
  * Definitions
@@ -45,19 +47,18 @@ int main(void)
 		adc_init();
 	  flash_init();
 		OTAInit();
-//	flash_init();
-//	erase_sector(0x30000);
-//	uint32_t a[4]={1,2,3,4};
-//	program_flash(0x30000, a, sizeof(a));
 //	while(1){
 //		getADCValue();
 //	}
+//	printf("OTA TEST!\n\r");
 		if(sys_thread_new("socket_connect", connect_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
 					LWIP_ASSERT("socket_init(): Task creation failed.", 0);
 		if(sys_thread_new("heartBeatTheard", heartBeat_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
 					LWIP_ASSERT("heartBeatTheard(): Task creation failed.", 0);
 		if(sys_thread_new("workHandleTheard", workHandle_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
-					LWIP_ASSERT("workHandleTheard(): Task creation failed.", 0);			
+					LWIP_ASSERT("workHandleTheard(): Task creation failed.", 0);
+		if(sys_thread_new("oneSecondTimerTheard", oneSecondTimer_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
+					LWIP_ASSERT("oneSecondTimerTheard(): Task creation failed.", 0);				
 		/* Will not get here unless a task calls vTaskEndScheduler ()*/
   	vTaskStartScheduler();	 		
 }

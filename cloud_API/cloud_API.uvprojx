@@ -395,6 +395,11 @@
               <FileType>5</FileType>
               <FilePath>.\source\flashLayout.h</FilePath>
             </File>
+            <File>
+              <FileName>userConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\source\userConfig.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1922,6 +1927,11 @@
               <FileName>workHandle.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\threadSource\workHandle.c</FilePath>
+            </File>
+            <File>
+              <FileName>oneSecondTimer_Thread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\threadSource\oneSecondTimer_Thread.c</FilePath>
             </File>
           </Files>
         </Group>
