@@ -1,5 +1,5 @@
 #include "fsl_gpio.h"
-//#include "board.h"
+#include "board.h"
 #include "fsl_port.h"
 #include "K64_api.h"
 #include "globalParams.h"
@@ -43,11 +43,6 @@ void BOARD_SW1_IRQ_HANDLER(void)
 
 void gpio_init(void)
 {
-	
-//	/* Define the init structure for the output LED pin*/	
-//	gpio_pin_config_t led_config = {
-//			kGPIO_DigitalOutput, 1,
-//	};
 	gpio_pin_config_t sensor_sw_config = {
 		kGPIO_DigitalInput, 0,
 	};
@@ -60,9 +55,8 @@ void gpio_init(void)
     EnableIRQ(BOARD_SW2_IRQ);
     GPIO_PinInit(SENSORSW2GPIO, SENSORSW2PIN, &sensor_sw_config);
 	
-//	/* Init output LED GPIO. */	
-//	GPIO_PinInit(BOARD_LED_RED_GPIO, BOARD_LED_RED_GPIO_PIN, &led_config);
-//	/* Init output LED GPIO. */	
-//	GPIO_PinInit(BOARD_LED_GREEN_GPIO, BOARD_LED_GREEN_GPIO_PIN, &led_config);
+
+		LED_GREEN_INIT(1);
+
 }
 

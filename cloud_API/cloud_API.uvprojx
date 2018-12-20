@@ -1953,6 +1953,11 @@
               <FileType>1</FileType>
               <FilePath>.\tools\calculateBinSize.c</FilePath>
             </File>
+            <File>
+              <FileName>getMAC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\tools\getMAC.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -16,11 +16,6 @@ The SPL06-002 device 7-bits address is 0x78*/
 #include "userConfig.h"
 #define OLED_I2C_ADDR   0x3D
 
-// OLED_WELCOME
-	BTCInfo btcInfo = {
-		.MAC_ADD = configMAC_ADDR,
-	};
-
 struct spl0601_calib_param_t {
 	int16_t c0;
 	int16_t c1;

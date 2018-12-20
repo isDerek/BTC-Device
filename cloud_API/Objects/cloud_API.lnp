@@ -116,6 +116,7 @@
 ".\objects\onesecondtimer_thread.o"
 ".\objects\delay.o"
 ".\objects\calculatebinsize.o"
+".\objects\getmac.o"
 ".\objects\ota_api.o"
 ".\objects\crc16.o"
 --library_type=microlib --diag_suppress 6314 --strict --scatter ".\MK64FN1M0xxx12_flash.scf"

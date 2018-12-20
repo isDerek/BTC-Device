@@ -9,6 +9,7 @@
 
 volatile bool ConnectAuthorizationFlag = false;
 SystemEventHandle eventHandle;
+BTCInfo btcInfo;
 
 void showUserDEF()
 {
@@ -211,18 +212,7 @@ void workHandle_thread(void *arg){
 	LWIP_UNUSED_ARG(arg);	
 	while(1){
 			// api ¥¶¿Ì
-				apiHandle(btcInfo.apiId);
-//				if(oledUserFlag == 1)
-//				{
-//					if(oledSwitchFlag == 1)
-//					{
-//						showUserDEF();
-//					}
-//					else
-//					{
-//						OLED_Welcome();
-//					}						
-//				}
+			apiHandle(btcInfo.apiId);
 			vTaskDelay(500);	
 	}	
 }

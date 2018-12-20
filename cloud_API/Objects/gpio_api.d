@@ -15,6 +15,8 @@
 .\objects\gpio_api.o: .\devices\MK64F12\MK64F12_features.h
 .\objects\gpio_api.o: .\devices\MK64F12\drivers\fsl_clock.h
 .\objects\gpio_api.o: .\devices\MK64F12\drivers\fsl_common.h
+.\objects\gpio_api.o: ..\cloud_API\board.h
+.\objects\gpio_api.o: ..\cloud_API\clock_config.h
 .\objects\gpio_api.o: .\devices\MK64F12\drivers\fsl_port.h
 .\objects\gpio_api.o: driver_api\K64_api.h
 .\objects\gpio_api.o: .\devices\MK64F12\drivers\fsl_flash.h

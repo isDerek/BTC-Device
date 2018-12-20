@@ -12,7 +12,8 @@
 #include "clock_config.h"
 #include "userConfig.h"
 
-
+#include "tools.h"
+#include "stdlib.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -40,17 +41,13 @@ int main(void)
     BOARD_BootClockRUN();
     BOARD_InitDebugConsole();
 		i2c_init();	
-		sensorInit();		
 		Network_Init();
+		sensorInit();	
 		gpio_init();
 		ftm_init();
 		adc_init();
 	  flash_init();
 		OTAInit();
-//	while(1){
-//		getADCValue();
-//	}
-//	printf("OTA TEST!\n\r");
 		if(sys_thread_new("socket_connect", connect_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
 					LWIP_ASSERT("socket_init(): Task creation failed.", 0);
 		if(sys_thread_new("heartBeatTheard", heartBeat_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)

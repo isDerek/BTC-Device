@@ -69,3 +69,6 @@
 .\objects\dhcp_api.o: ..\cloud_API\clock_config.h
 .\objects\dhcp_api.o: .\devices\MK64F12\drivers\fsl_gpio.h
 .\objects\dhcp_api.o: .\source\userConfig.h
+.\objects\dhcp_api.o: .\tools\tools.h
+.\objects\dhcp_api.o: .\globalParams\globalParams.h
+.\objects\dhcp_api.o: .\cJSON\cJSON.h

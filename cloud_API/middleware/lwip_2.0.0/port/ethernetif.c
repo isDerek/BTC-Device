@@ -449,7 +449,7 @@ static void low_level_init(struct netif *netif, const uint8_t enetIdx,
 
     /* set MAC hardware address */
     memcpy(netif->hwaddr, ethernetifConfig->macAddress, NETIF_MAX_HWADDR_LEN);
-
+	
     /* maximum transfer unit */
     netif->mtu = 1500; /* TODO: define a config */
 

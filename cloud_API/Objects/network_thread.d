@@ -60,3 +60,4 @@
 .\objects\network_thread.o: .\crc16\lib_crc16.h
 .\objects\network_thread.o: .\ota\ota.h
 .\objects\network_thread.o: E:\KEIL\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\network_thread.o: .\tools\tools.h

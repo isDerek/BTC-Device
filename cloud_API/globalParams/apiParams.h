@@ -20,7 +20,7 @@
 #define CMD_RESP_otaUpdate           "{\"msgId\":\"%s\",\"apiId\":%d,\"respCode\":%d}"
 #define	NOTIFY_REQ_otaDeviceStatus	 "{\"apiId\":%d,\"deviceStatus\":%d}"	
 
-#define API_AUTH_mac "be454f62e720"
+#define API_AUTH_mac "be454f62e720"  //test
 #define API_AUTH_reconnect0 0
 #define API_AUTH_reconnect1 1
 //#define MODULE_PORTS 1

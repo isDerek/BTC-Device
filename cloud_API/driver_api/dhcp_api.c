@@ -11,8 +11,9 @@
 #include "K64_api.h"
 #include "board.h"
 #include "userConfig.h"
-///* MAC address configuration. *///be 45 4f 62 e7 20
-//#define configMAC_ADDR {0xbe, 0x45, 0x4f, 0x62, 0xe7, 0x20}
+#include "tools.h"
+#include "globalParams.h"
+
 /* Address of PHY interface. */
 #define EXAMPLE_PHY_ADDRESS BOARD_ENET0_PHY_ADDRESS
 /* System clock name. */
@@ -29,6 +30,7 @@ ip_addr_t server_ipaddr;
 
 void Network_Init(void)
 {
+	btcInfo.MAC_ADD = getMAC();
 	MPU_Type *base = MPU;
 	/* Disable MPU. */
 	base->CESR &= ~MPU_CESR_VLD_MASK;
@@ -36,8 +38,14 @@ void Network_Init(void)
   ethernetif_config_t fsl_enet_config0 = {
         .phyAddress = EXAMPLE_PHY_ADDRESS,
         .clockName = EXAMPLE_CLOCK_NAME,
+	#ifdef USER_DEF_MAC
         .macAddress = configMAC_ADDR,
+	#endif
   };
+	#ifndef USER_DEF_MAC	
+	memcpy(fsl_enet_config0.macAddress,btcInfo.MAC_ADD,sizeof(btcInfo.MAC_ADD));
+	#endif
+	
 	IP4_ADDR(&fsl_netif0_ipaddr, 0U, 0U, 0U, 0U);
 	IP4_ADDR(&fsl_netif0_netmask, 0U, 0U, 0U, 0U);
 	IP4_ADDR(&fsl_netif0_gw, 0U, 0U, 0U, 0U);

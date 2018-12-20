@@ -10,6 +10,7 @@
 #include "lib_crc16.h"
 #include "ota.h"
 #include "stdlib.h"
+#include "tools.h"
 u16_t port = 55551; // Cloud API
 //u16_t port = 44441;
 struct netconn *tcpsocket;
@@ -283,6 +284,7 @@ void connect_thread(void *arg)
 	{
 		if(!server_connect_Flag)
 		{
+			LED_GREEN_OFF();
 			tcpsocket = netconn_new(NETCONN_TCP);
 			netconn_set_recvtimeout(tcpsocket, 20);
 			if(netconn_connect(tcpsocket, &server_ipaddr, port)!=ERR_OK)
@@ -292,6 +294,7 @@ void connect_thread(void *arg)
 			}	
 			else
 			{
+				LED_GREEN_ON();
 				printf("\r\n connect ok \n\r");
 				server_connect_Flag = true;
 			}
@@ -300,6 +303,9 @@ void connect_thread(void *arg)
 		{
 			if(!ConnectAuthorizationFlag)
 			{
+				char *mac;
+				mac = malloc(10);
+				sprintf(mac,"%02x%02x%02x%02x%02x%02x",btcInfo.MAC_ADD[0],btcInfo.MAC_ADD[1],btcInfo.MAC_ADD[2],btcInfo.MAC_ADD[3],btcInfo.MAC_ADD[4],btcInfo.MAC_ADD[5]);		
 				sprintf(socketInfo.outBuffer, API_AUTH_Sendpack, API_AUTH, versionSN, API_AUTH_mac, API_AUTH_reconnect0);			
 				netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);
 				printf("socketInfo.outBuffer = %s \n\r",socketInfo.outBuffer);

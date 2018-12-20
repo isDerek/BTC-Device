@@ -63,6 +63,7 @@ PinsProfile:
 #define PIN17_IDX                       17u   /*!< Pin number for pin 17 in a port */
 #define PIN18_IDX                       18u   /*!< Pin number for pin 18 in a port */
 #define PIN19_IDX                       19u   /*!< Pin number for pin 19 in a port */
+#define PIN21_IDX												21u   /*!< Pin number for pin 21 in a port */
 #define PIN22_IDX                       22u   /*!< Pin number for pin 22 in a port */
 #define PIN24_IDX                       24u   /*!< Pin number for pin 24 in a port */
 #define PIN25_IDX                       25u   /*!< Pin number for pin 25 in a port */
@@ -148,13 +149,15 @@ void BOARD_InitPins(void) {
     (~(SIM_SOPT5_UART0TXSRC_MASK)))                          /* Mask bits to zero which are setting */
       | SIM_SOPT5_UART0TXSRC(SOPT5_UART0TXSRC_UART_TX)       /* UART 0 transmit data source select: UART0_TX pin */
     );
-//	PORT_SetPinMux(PORTC, PIN10_IDX, kPORT_MuxAlt2);           /* PORTC10 (pin C7) is configured as I2C1_SCL */
-//  PORT_SetPinMux(PORTC, PIN11_IDX, kPORT_MuxAlt2);           /* PORTC11 (pin B7) is configured as I2C1_SDA */
+
   PORT_SetPinMux(PORTE, PIN24_IDX, kPORT_MuxAlt5);           /* PORTE24 (pin M4) is configured as I2C0_SCL */
   PORT_SetPinMux(PORTE, PIN25_IDX, kPORT_MuxAlt5);           /* PORTE25 (pin K5) is configured as I2C0_SDA */
 	PORT_SetPinMux(PORTB, PIN11_IDX, kPORT_PinDisabledOrAnalog); /* PORTB11  is configured as ADC1_SE15 */
 	PORT_SetPinMux(PORTC, PIN12_IDX, kPORT_MuxAsGpio);          /* PORTC12  is configured as PTC12 */
 	PORT_SetPinMux(PORTC, PIN3_IDX, kPORT_MuxAsGpio);          /* PORTC12  is configured as PTC3 */
+//	PORT_SetPinMux(PORTB, PIN22_IDX, kPORT_MuxAsGpio);         /* PORTB22 (pin 68) is configured as PTB22  RED LED*/
+	PORT_SetPinMux(PORTE, PIN26_IDX, kPORT_MuxAsGpio);         /* PORTB22 (pin 68) is configured as PTB22  GREEN LED*/
+//	PORT_SetPinMux(PORTE, PIN21_IDX, kPORT_MuxAsGpio);         /* PORTB22 (pin 68) is configured as PTB22  BLUE LED*/
 }
 void BOARD_I2C_ConfigurePins(void)
 {

@@ -23,7 +23,7 @@ typedef struct _BTCInfo {
 		char msgId[10]; 
 		int deviceID;
 		int UserID;
-	  uint8_t MAC_ADD[6];
+	  char *MAC_ADD;
 		int configBuffer[10];
 		char oledOneLine[16];
 		char oledSecondLine[16];
