@@ -30,7 +30,7 @@ ip_addr_t server_ipaddr;
 
 void Network_Init(void)
 {
-	btcInfo.MAC_ADD = getMAC();
+	getMAC();
 	MPU_Type *base = MPU;
 	/* Disable MPU. */
 	base->CESR &= ~MPU_CESR_VLD_MASK;

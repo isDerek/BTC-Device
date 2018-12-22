@@ -14,7 +14,7 @@
 
 OTAInfo otaInfo;
 char versionSN [33] ="00000000000000000000000000000000";
-
+char tempBuffer[256];
 void updateCode(void);
 
 void OTAInit(void)
@@ -24,8 +24,7 @@ void OTAInit(void)
     char* OTACodePartition = (char*) OTA_CODE_START_ADDRESS;
     int i = 0;
 		int binTotalSize;
-    int codecrc16,otacodecrc16,codechecksum;
-		char tempBuffer[256];
+    int codecrc16,otacodecrc16,codechecksum;		
 		unsigned char* appStartAddress = (unsigned char*) CODE_START_ADDRESS;
     codechecksum = (cdata[0]<<8)|cdata[1];
 		printf("app calculate codecrc16 =%x codechecksum = %x\n\r",codecrc16,codechecksum);
@@ -44,7 +43,7 @@ void OTAInit(void)
 //				printf("binTotalSize = %d\n\r",binTotalSize);
 				codecrc16 = calculate_crc16(codePartition,binTotalSize);
         otacodecrc16 = calculate_crc16(OTACodePartition, binTotalSize);
-//				printf("otacodecrc16 = %x codecrc16 = %x\n\r",otacodecrc16, codecrc16);
+				printf("otacodecrc16 = %x codecrc16 = %x\n\r",otacodecrc16, codecrc16);
         if(otacodecrc16 == codecrc16) {
             memset(tempBuffer,0x0,VERSION_STR_LEN);
 					/*   tempBuffer[0],tempBuffer[1] = appcodechecksum && tempBuffer[2],tempBuffer[3] = otacodechecksum */
@@ -53,10 +52,13 @@ void OTAInit(void)
 						tempBuffer[4] = tempBuffer[7] = (binTotalSize >> 16) & 0xff;  // first boot otabin is  real size
 						tempBuffer[5] = tempBuffer[8] = (binTotalSize >> 8) & 0xff;  // first boot otabin is  real size
 					  tempBuffer[6] = tempBuffer[9] =	(binTotalSize) & 0xff;  // first boot otabin is  real size
-					  tempBuffer[10] = '1';
+					  tempBuffer[10] = '1'; // first boot flag
+						tempBuffer[11] = btcInfo.deviceRegister; // register flag
+						tempBuffer[12] = btcInfo.userID; // userID
+						tempBuffer[13] = btcInfo.deviceID; // deviceID
 						sprintf(versionSN,"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",otaInfo.versionSN[0],otaInfo.versionSN[1],otaInfo.versionSN[2],otaInfo.versionSN[3],otaInfo.versionSN[4],otaInfo.versionSN[5],otaInfo.versionSN[6],otaInfo.versionSN[7],otaInfo.versionSN[8],otaInfo.versionSN[9],otaInfo.versionSN[10],otaInfo.versionSN[11],otaInfo.versionSN[12],otaInfo.versionSN[13],otaInfo.versionSN[14],otaInfo.versionSN[15]);
 //						printf("×ª»»ºó :%s\n\r",versionSN);	
-						sprintf(tempBuffer+11,"%s",versionSN);
+						sprintf(tempBuffer+14,"%s",versionSN);
             erase_sector(VERSION_STR_ADDRESS);
             program_flash(VERSION_STR_ADDRESS,(uint32_t *)tempBuffer, 256);
         }
@@ -68,7 +70,7 @@ void OTAInit(void)
 						md5Calculate(appStartAddress,binTotalSize,(unsigned char*)otaInfo.versionSN);
 						sprintf(versionSN,"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",otaInfo.versionSN[0],otaInfo.versionSN[1],otaInfo.versionSN[2],otaInfo.versionSN[3],otaInfo.versionSN[4],otaInfo.versionSN[5],otaInfo.versionSN[6],otaInfo.versionSN[7],otaInfo.versionSN[8],otaInfo.versionSN[9],otaInfo.versionSN[10],otaInfo.versionSN[11],otaInfo.versionSN[12],otaInfo.versionSN[13],otaInfo.versionSN[14],otaInfo.versionSN[15]);
 						
-						printf("Current APP checksum: %2X%2X OTA checksum: %2X%2X  otaBintotal: %d  appBintotal: %d  versionSN:  %s \n\r",cdata[0],cdata[1],cdata[2],cdata[3],(cdata[4]<<16)|(cdata[5]<<8)|(cdata[6]),(cdata[7]<<16)|(cdata[8]<<8)|(cdata[9]),cdata+11);
+						printf("Current APP checksum: %2X%2X OTA checksum: %2X%2X  otaBintotal: %d  appBintotal: %d  versionSN:  %s \n\r",cdata[0],cdata[1],cdata[2],cdata[3],(cdata[4]<<16)|(cdata[5]<<8)|(cdata[6]),(cdata[7]<<16)|(cdata[8]<<8)|(cdata[9]),cdata+14);
 						sprintf(otaInfo.versionSN,"%s",versionSN);	
 //						printf("otaInfo.versionSN =  %s\n\r",otaInfo.versionSN);
             printf("the FW is already the newest!\r\n");

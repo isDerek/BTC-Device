@@ -49,3 +49,4 @@
 .\objects\sensor.o: .\middleware\lwip_2.0.0\src\include\lwip/ip6_addr.h
 .\objects\sensor.o: .\cJSON\cJSON.h
 .\objects\sensor.o: .\source\userConfig.h
+.\objects\sensor.o: .\source\flashLayout.h

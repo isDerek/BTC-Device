@@ -14,6 +14,9 @@
 
 #include "tools.h"
 #include "stdlib.h"
+#include "globalParams.h"
+#include "apiParams.h"
+#include "flashLayout.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -34,7 +37,14 @@
 /*******************************************************************************
  * Code
  ******************************************************************************/
-
+void device_init()
+{
+	btcInfo.deviceRegister = 0;
+	btcInfo.module = -1;
+	btcInfo.deviceID = 0;
+	btcInfo.userID = 0;
+	
+}
 int main(void)
 {
     BOARD_InitPins();
@@ -47,7 +57,12 @@ int main(void)
 		ftm_init();
 		adc_init();
 	  flash_init();
-		OTAInit();
+		OTAInit();	
+		device_init();
+//	while(1)
+//	{
+//		
+//	}
 		if(sys_thread_new("socket_connect", connect_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
 					LWIP_ASSERT("socket_init(): Task creation failed.", 0);
 		if(sys_thread_new("heartBeatTheard", heartBeat_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)

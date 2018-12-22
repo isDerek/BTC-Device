@@ -1,17 +1,18 @@
 
-/* PACKET */
-#define API_AUTH 1
-#define API_SendData 2
-#define API_Heartpack 3
-#define API_PushDevice 4
-#define API_OTA 5
-#define API_AUTH_Sendpack "{\"apiId\":%d,\"versionSN\":\"%s\",\"mac\":\"%s\",\"reconnect\":%d}"					
+//#define API_AUTH_Sendpack "{\"apiId\":%d,\"versionSN\":\"%s\",\"mac\":\"%s\",\"reconnect\":%d}"		//cloud api
+#define API_AUTH_Sendpack "{\"apiId\":%d,\"versionSN\":\"%s\",\"mac\":\"%02x%02x%02x%02x%02x%02x\",\"userId\":%d,\"deviceId\":%d}"		//cloud api
+#define API_Heartpack_Sendpack "{\"apiId\":%d}"
+#define API_SenSorData_Sendpack "{\"apiId\":%d,\"userId\":%d,\"deviceId\":%d,\"sensorData\":[\"Temp\":%d,\"HUMIDITY\":%d,\"LIGHT_RES\":%d,\"UVA\":%d,\"UVB\":%d,\"LUX_INT\":%d]}"
 #define API_SendData_Response "{\"apiId\":%d,\"respCode\":%d,\"msgId\":\"%s\"}"
+
+
+
+
 #define API_SendData_Response_FloatData "{\"apiId\":%d,\"respCode\":%d,\"result\":[%4.2f],\"msgId\":\"%s\"}"
 #define API_SendData_Response_IntData "{\"apiId\":%d,\"respCode\":%d,\"result\":[%d],\"msgId\":\"%s\"}"
 #define API_SendData_Response_TwoData "{\"apiId\":%d,\"respCode\":%d,\"result\":[%d,%d],\"msgId\":\"%s\"}"
 #define API_SendData_Response_ThreeData "{\"apiId\":%d,\"respCode\":%d,\"result\":[%3.2f,%3.2f,%3.2f],\"msgId\":\"%s\"}"
-#define API_Heartpack_Response "{\"apiId\":%d}"
+
 #define API_PushDevice_Response "{\"apiId\":%d,\"deviceStatus\":%d,\"portStatus\":[%d,%d]}"
 #define API_OTA_Response "{\"apiId\":%d,\"versionSN\":%s,\"blockOffset\":%d,\"blockSize\":%d}"
 
@@ -20,20 +21,11 @@
 #define CMD_RESP_otaUpdate           "{\"msgId\":\"%s\",\"apiId\":%d,\"respCode\":%d}"
 #define	NOTIFY_REQ_otaDeviceStatus	 "{\"apiId\":%d,\"deviceStatus\":%d}"	
 
-#define API_AUTH_mac "be454f62e720"  //test
+//#define API_AUTH_mac "be454f62e720"  //test
+#define API_AUTH_mac "002e20020019"  //test
 #define API_AUTH_reconnect0 0
 #define API_AUTH_reconnect1 1
-//#define MODULE_PORTS 1
-//#define MODULE_PWM 2
-//#define MODULE_RGB 3
-//#define MODULE_OLED 4
-//#define MODULE_ACCEL 10
-//#define MODULE_LIGHT 11
-//#define MODULE_UV 12
-//#define MODULE_TempHumi 13
-//#define MODULE_PRESSURE 14
-//#define MODULE_BUTTON 15
-//#define MODULE_OTA 100
+
 
 #define ERR_Code 1
 #define ERR_Connect 2
@@ -42,14 +34,23 @@
 #define ERR_Server 5
 #define ERR_Success 100
 
-
-enum API_apiId
+//  Device 推送数据的 API
+enum API_SEND
 {
-    API_apiId_AUTH = 1U, 
-    API_apiId_SendData,      
-    API_apiId_Heartpack,      
-    API_apiId_PushDevice,      
-    API_apiId_OTA,      
+	API_SEND_AUTH = 1U,
+	API_SEND_Heartpack,
+	API_SEND_DATA,
+	API_SEND_OTA,
+};
+// Device 发送数据的响应 API
+enum API_RES
+{
+    API_RES_AUTH = 1U, 
+		API_RES_Heartpack,  
+		API_RES_SendData,	              	 
+	  API_RES_OTA,
+		API_RES_SERVER_SEND,
+		
 };
 enum API_module
 {

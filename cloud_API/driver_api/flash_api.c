@@ -127,7 +127,7 @@ int program_flash(uint32_t start, uint32_t *src, uint32_t lengthInBytes)
 			error_trap();
     }
   }
-//	printf("\r\n Successfully Programmed and Verified Location 0x%x -> 0x%x \r\n", start,
-//  (start + lengthInBytes));
+	printf("\r\n Successfully Programmed and Verified Location 0x%x -> 0x%x \r\n", start,
+  (start + lengthInBytes));
 	return 1;
 }

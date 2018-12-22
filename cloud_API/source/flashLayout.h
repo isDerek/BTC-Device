@@ -18,6 +18,7 @@
 #define CODE_SIZE                   (CODE_SECTOR_NUM * SECTOR_SIZE)
 #define OTA_CODE_START_ADDRESS      (CODE_START_ADDRESS + CODE_SIZE)
 
+
 #define VERSION_STR_ADDRESS         (OTA_CODE_START_ADDRESS + CODE_SIZE)
 #define VERSION_STR_LEN             64  // version string 32 bytes  For ex: "WPI-DEMO VERSION 1.0"
 

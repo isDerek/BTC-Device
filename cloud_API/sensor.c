@@ -14,7 +14,9 @@ The SPL06-002 device 7-bits address is 0x78*/
 #include "sensor.h"
 #include "globalParams.h"
 #include "userConfig.h"
+#include "flashLayout.h"
 #define OLED_I2C_ADDR   0x3D
+
 
 struct spl0601_calib_param_t {
 	int16_t c0;
@@ -43,8 +45,8 @@ extern void delay_s(void);
 extern _ARMABI int printf(const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1)));
 extern void OLED_ShowStr(unsigned char x,unsigned char y,unsigned char *chr);
 extern float x, y, z;
-extern uint16_t UVA_data, UVB_data;
-extern float lx;
+extern int	UVA_data, UVB_data;
+extern int lx;
 extern uint32_t persure;
 extern float temp, hum;
 extern int red, green, blue;
@@ -570,16 +572,23 @@ void OLED_Welcome(void)
 	char *UserID = "UserID = ";
 	char *DeviceID = "DeviceID = ";
 	char *MAC_ADDRESS = "MAC_ADDRESS:";
-	char *MAC;
-	MAC = malloc(6);
-	sprintf(MAC,"%02x%02x%02x%02x%02x%02x",btcInfo.MAC_ADD[0],btcInfo.MAC_ADD[1],btcInfo.MAC_ADD[2],btcInfo.MAC_ADD[3],btcInfo.MAC_ADD[4],btcInfo.MAC_ADD[5]);
+	char userId[10];
+	char deviceId[10];
+	char mac[16];
+	char* cdata = (char*)VERSION_STR_ADDRESS;
+	btcInfo.userID = cdata[12];
+	btcInfo.deviceID = cdata[13];
+	sprintf(userId,"%d",btcInfo.userID);
+	sprintf(deviceId,"%d",btcInfo.deviceID);
+	sprintf(mac,"%02x%02x%02x%02x%02x%02x",btcInfo.mac[0],btcInfo.mac[1],btcInfo.mac[2],btcInfo.mac[3],btcInfo.mac[4],btcInfo.mac[5]);
 //	printf("%02x%02x%02x%02x%02x%02x\n\r",loginInfo.MAC_ADD[0],loginInfo.MAC_ADD[1],loginInfo.MAC_ADD[2],loginInfo.MAC_ADD[3],loginInfo.MAC_ADD[4],loginInfo.MAC_ADD[5]);
 	API_OLED_Clear();
 	OLED_ShowStr(0, 0, (uint8_t*)UserID);
+	OLED_ShowStr(72, 0, (uint8_t*)userId);
 	OLED_ShowStr(0, 2, (uint8_t*)DeviceID);
+	OLED_ShowStr(88, 2, (uint8_t*)deviceId);
 	OLED_ShowStr(0, 4, (uint8_t*)MAC_ADDRESS);
-	OLED_ShowStr(0, 6, (uint8_t*)MAC);
-	free(MAC);
+	OLED_ShowStr(0, 6, (uint8_t*)mac);
 }
 
 void HDC1050_Init(void)
@@ -607,16 +616,16 @@ void HDC1050_Run(void)
 	I2C_Readdata(I2C0, 0x40, 0x00, buf_TH, 2);
 	temp = buf_TH[0]*256+buf_TH[1];
 	temp = temp/65536*165-40;
-	printf(" Temperature is %2.2f\r\n", temp);
+//	printf(" Temperature is %d\r\n", temp);
 	//H
 	I2C_Readdata(I2C0, 0x40, 0x01, buf_TH, 2);
 	hum = buf_TH[0]*256+buf_TH[1];
 	hum = hum/65536*100; 
-	printf(" Humidity is %2.2f\r\n", hum);
-	sprintf(Tdata, "%2.2f", temp);	
-	OLED_ShowStr(24, 3, (uint8_t*)Tdata);
-	sprintf(Hdata, "%2.2f", hum);
-	OLED_ShowStr(24, 6, (uint8_t*)Hdata);
+//	printf(" Humidity is %2.2f\r\n", hum);
+//	sprintf(Tdata, "%2.2f", temp);	
+//	OLED_ShowStr(24, 3, (uint8_t*)Tdata);
+//	sprintf(Hdata, "%2.2f", hum);
+//	OLED_ShowStr(24, 6, (uint8_t*)Hdata);
 }
 
 void RGB_Init(void)
@@ -677,15 +686,15 @@ void VEML6030_Run(void)
 {
 	uint8_t ALS[2];
 	uint16_t ALS_data;
-	char Ldata[16];
+//	char Ldata[16];
 
 	I2C_Readdata(I2C0, 0x48, 0x04, ALS, 2);
 	ALS_data = (ALS[1]<<8)+ALS[0];
 	const uint8_t SENSITIVITY=24; /*SENSITIVITY = 0.042 (lx/bit)  1/0.042 = 24*/
 	lx = ALS_data/SENSITIVITY/10;
-	printf("lx = %2.0f\r\n",lx);
-	sprintf(Ldata, "%2.0f", lx);
-	OLED_ShowStr(40, 3, (uint8_t*)Ldata);
+//	printf("lx = %d\r\n",lx);
+//	sprintf(Ldata, "%d", lx);
+//	OLED_ShowStr(40, 3, (uint8_t*)Ldata);
 }
 
 void VEML6075_Init(void)
@@ -705,16 +714,16 @@ void VEML6075_Show(void)
 void VEML6075_Run(void)
 {
 	uint8_t UVA[2], UVB[2];
-	char UVAdata[16];
-	char UVBdata[16];
+//	char UVAdata[16];
+//	char UVBdata[16];
 	I2C_Readdata(I2C0, 0x10, 0x07, UVA, 2);
 	UVA_data = ((UVA[1]<<8)+UVA[0]);
 	I2C_Readdata(I2C0, 0x10, 0x09, UVB, 2);
 	UVB_data = ((UVB[1]<<8)+UVB[0]);
-	sprintf(UVAdata, "%3.0f", (float)UVA_data);
-	sprintf(UVBdata, "%3.0f", (float)UVB_data);
-	OLED_ShowStr(40, 3, (uint8_t*)UVAdata);
-	OLED_ShowStr(40, 6, (uint8_t*)UVBdata);
+//	sprintf(UVAdata, "%d", (float)UVA_data);
+//	sprintf(UVBdata, "%d", (float)UVB_data);
+//	OLED_ShowStr(40, 3, (uint8_t*)UVAdata);
+//	OLED_ShowStr(40, 6, (uint8_t*)UVBdata);
 }
 
 void ADXL345_Init(void)

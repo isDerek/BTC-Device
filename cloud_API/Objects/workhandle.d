@@ -57,3 +57,6 @@
 .\objects\workhandle.o: .\devices\MK64F12\drivers\fsl_flash.h
 .\objects\workhandle.o: .\devices\MK64F12\drivers\fsl_i2c.h
 .\objects\workhandle.o: .\source\flashLayout.h
+.\objects\workhandle.o: .\tools\tools.h
+.\objects\workhandle.o: .\crc16\lib_crc16.h
+.\objects\workhandle.o: .\md5\md5Std.h

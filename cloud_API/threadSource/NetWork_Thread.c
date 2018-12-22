@@ -11,7 +11,8 @@
 #include "ota.h"
 #include "stdlib.h"
 #include "tools.h"
-u16_t port = 55551; // Cloud API
+//u16_t port = 55551; // Cloud API
+u16_t port = 61111;
 //u16_t port = 44441;
 struct netconn *tcpsocket;
 struct netbuf  *TCPNetbuf;
@@ -23,15 +24,16 @@ volatile bool showFlag = false;
 bool server_connect_Flag = false;
 //SocketInfo socketInfo;
 float x, y, z;//加速度
-uint16_t UVA_data, UVB_data;
-float lx;//光亮等级
+int UVA_data, UVB_data;
+int lx;//光亮等级
 uint32_t persure;
 float temp, hum;
 int red, green, blue;
+int light_res;
 int respCode;
 
 u16_t len1;
-char tempBuffer[256];//need to be fixed, save data flash use this buffer;
+extern char tempBuffer[256];//need to be fixed, save data flash use this buffer;
 int otaBinTotalSize;
 
 /*
@@ -121,12 +123,12 @@ void parseRecvMsgInfo(char *text)
 		else 
 		{
 			btcInfo.apiId = cJSON_GetObjectItem( json , "apiId")->valueint;
-			
+			printf("apiId = %d\n\r",btcInfo.apiId);
 			sprintf(btcInfo.msgId,"%s",cJSON_GetObjectItem(json,"msgId")->valuestring);		
-					
 			respCode = cJSON_GetObjectItem( json , "respCode")->valueint;
-						
+			printf("respCode = %d\n\r",respCode);			
 			json_data = cJSON_GetObjectItem( json , "data");
+
 			if(btcInfo.apiId == 24)
 			{
 				sprintf(otaInfo.versionSN,"%s",cJSON_GetObjectItem(json,"versionSN")->valuestring);
@@ -276,7 +278,7 @@ void OTAUpdate()
 	}				
 	updateCode();	
 }
-
+int a = 1;
 void connect_thread(void *arg)
 {	
   LWIP_UNUSED_ARG(arg);	
@@ -303,13 +305,17 @@ void connect_thread(void *arg)
 		{
 			if(!ConnectAuthorizationFlag)
 			{
-				char *mac;
-				mac = malloc(10);
-				sprintf(mac,"%02x%02x%02x%02x%02x%02x",btcInfo.MAC_ADD[0],btcInfo.MAC_ADD[1],btcInfo.MAC_ADD[2],btcInfo.MAC_ADD[3],btcInfo.MAC_ADD[4],btcInfo.MAC_ADD[5]);		
-				sprintf(socketInfo.outBuffer, API_AUTH_Sendpack, API_AUTH, versionSN, API_AUTH_mac, API_AUTH_reconnect0);			
+				if(a == 1){
+				char* cdata = (char*)VERSION_STR_ADDRESS;
+				btcInfo.userID = cdata[12];
+				btcInfo.deviceID = cdata[13];
+//				printf("firstboot = %c,register = %d, userid = %d,deviceid = %d\n\r",cdata[10],cdata[11],cdata[12],cdata[13]);
+				sprintf(socketInfo.outBuffer, API_AUTH_Sendpack, API_SEND_AUTH, versionSN, btcInfo.mac[0], btcInfo.mac[1], btcInfo.mac[2], btcInfo.mac[3], btcInfo.mac[4], btcInfo.mac[5], btcInfo.userID, btcInfo.deviceID);			
 				netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);
 				printf("socketInfo.outBuffer = %s \n\r",socketInfo.outBuffer);
-				memset( socketInfo.outBuffer, 0, sizeof(socketInfo.outBuffer) );
+				delay_s();
+					a = 0;
+				}
 			}
 			else
 			{

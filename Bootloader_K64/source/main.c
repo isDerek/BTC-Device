@@ -102,7 +102,7 @@ int main ()
 			codecrc16 = calculate_crc16(codePartition, appTotalSize);
 			otacodecrc16 = calculate_crc16(OTACodePartition, otaTotalSize);			
 			printf("otacodecrc16 = %x, otacodechecksum = %x, codechecksum= %x, codecrc16 = %x otaTotalSize = %d appTotalSize = %d OTAversionSN = %s\n\r",otacodecrc16,otacodechecksum,codechecksum,codecrc16,otaTotalSize,appTotalSize,versionBuffer);						
-			if(strcmp(versionBuffer,cdata+11)==NULL)
+			if(strcmp(versionBuffer,cdata+14)==NULL)
 			{	
 				if(codechecksum != otacodechecksum ) // update;
 				{
@@ -129,7 +129,10 @@ int main ()
 					tempBuffer[5] = tempBuffer[8] =(otaTotalSize >> 8) & 0xff;// otatotal real size
 					tempBuffer[6] = tempBuffer[9] =(otaTotalSize) & 0xff;// otatotal real size
 					tempBuffer[10] = '1';
-					for(i=11;i<VERSION_STR_LEN;i++)
+					tempBuffer[11] = 0;
+					tempBuffer[12] = 0;
+					tempBuffer[13] = 0;					
+					for(i=14;i<VERSION_STR_LEN;i++)
 					tempBuffer[i] = cdata[i];
 					erase_sector(VERSION_STR_ADDRESS);
 					program_flash(VERSION_STR_ADDRESS,(uint32_t *)tempBuffer, 256);
@@ -164,7 +167,10 @@ int main ()
 					tempBuffer[5] = tempBuffer[8] =(otaTotalSize >> 8) & 0xff;// otatotal real size
 					tempBuffer[6] = tempBuffer[9] =(otaTotalSize) & 0xff;// otatotal real size
 					tempBuffer[10] = '1';
-					sprintf(tempBuffer+11,"%s",versionBuffer);
+					tempBuffer[11] = 0;
+					tempBuffer[12] = 0;
+					tempBuffer[13] = 0;
+					sprintf(tempBuffer+14,"%s",versionBuffer);
 					erase_sector(VERSION_STR_ADDRESS);
 					program_flash(VERSION_STR_ADDRESS,(uint32_t *)tempBuffer, 256);
 					printf("ota completed!\r\n");
