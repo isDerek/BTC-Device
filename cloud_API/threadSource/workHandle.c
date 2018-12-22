@@ -220,7 +220,15 @@ void switchMoudle()
 			break;
 		case API_module_pwm://pwm
 			FTM_updata(80);
-			FTM_updata(btcInfo.configBuffer[0]);
+			if(btcInfo.configBuffer[0] == 0)
+			{
+				FTM_updata(0);
+			}
+			else if(btcInfo.configBuffer[0] == 1)
+			{
+				FTM_updata(100);
+			}
+//			FTM_updata(btcInfo.configBuffer[0]);
 			sprintf(socketInfo.outBuffer, API_SendData_Response, btcInfo.apiId, ERR_Success,btcInfo.msgId);
 			netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);
 			memset(btcInfo.configBuffer,0,sizeof(btcInfo.configBuffer));		

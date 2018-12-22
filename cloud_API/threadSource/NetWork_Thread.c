@@ -123,10 +123,10 @@ void parseRecvMsgInfo(char *text)
 		else 
 		{
 			btcInfo.apiId = cJSON_GetObjectItem( json , "apiId")->valueint;
-			printf("apiId = %d\n\r",btcInfo.apiId);
+//			printf("apiId = %d\n\r",btcInfo.apiId);
 			sprintf(btcInfo.msgId,"%s",cJSON_GetObjectItem(json,"msgId")->valuestring);		
 			respCode = cJSON_GetObjectItem( json , "respCode")->valueint;
-			printf("respCode = %d\n\r",respCode);			
+//			printf("respCode = %d\n\r",respCode);			
 			json_data = cJSON_GetObjectItem( json , "data");
 
 			if(btcInfo.apiId == 24)
