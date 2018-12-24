@@ -309,6 +309,12 @@ void connect_thread(void *arg)
 				char* cdata = (char*)VERSION_STR_ADDRESS;
 				btcInfo.userID = cdata[12];
 				btcInfo.deviceID = cdata[13];
+				if(btcInfo.userID == 0 && btcInfo.deviceID == 0)
+				{
+					char *noRegister = "No Register";
+					API_OLED_Clear();
+					OLED_ShowStr(0, 0, (uint8_t*)noRegister);
+				}
 //				printf("firstboot = %c,register = %d, userid = %d,deviceid = %d\n\r",cdata[10],cdata[11],cdata[12],cdata[13]);
 				sprintf(socketInfo.outBuffer, API_AUTH_Sendpack, API_SEND_AUTH, versionSN, btcInfo.mac[0], btcInfo.mac[1], btcInfo.mac[2], btcInfo.mac[3], btcInfo.mac[4], btcInfo.mac[5], btcInfo.userID, btcInfo.deviceID);			
 				netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);

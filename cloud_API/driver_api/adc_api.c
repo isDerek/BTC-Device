@@ -22,6 +22,14 @@ volatile uint32_t g_Adc16ConversionValue;
  * Code
  ******************************************************************************/
  adc16_channel_config_t adc16ChannelConfigStruct;
+ 
+ int getADCValue(void)
+{
+	ADC16_SetChannelConfig(DEMO_ADC16_BASE, DEMO_ADC16_CHANNEL_GROUP, &adc16ChannelConfigStruct);
+//	printf("ADC Value: %d\r\n", g_Adc16ConversionValue);
+	return g_Adc16ConversionValue;
+}
+
  void DEMO_ADC16_IRQ_HANDLER_FUNC(void)
 {
     g_Adc16ConversionDoneFlag = true;
@@ -60,11 +68,7 @@ void adc_init(void)
 #if defined(FSL_FEATURE_ADC16_HAS_DIFF_MODE) && FSL_FEATURE_ADC16_HAS_DIFF_MODE
     adc16ChannelConfigStruct.enableDifferentialConversion = false;
 #endif /* FSL_FEATURE_ADC16_HAS_DIFF_MODE */
+		getADCValue();
 }
 
-int getADCValue(void)
-{
-	ADC16_SetChannelConfig(DEMO_ADC16_BASE, DEMO_ADC16_CHANNEL_GROUP, &adc16ChannelConfigStruct);
-//	printf("ADC Value: %d\r\n", g_Adc16ConversionValue);
-	return g_Adc16ConversionValue;
-}
+
