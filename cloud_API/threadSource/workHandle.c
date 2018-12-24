@@ -311,8 +311,8 @@ void notifyHandle(){
 		VEML6075_Run(); // 紫外线传感器
 		HDC1050_Run(); // 温湿度传感器
 		light_res = getADCValue();
-//		printf("lux : %d  UVA = %d   UVB = %d  Temp= %d  Hum = %d light_res = %d \n\r",lx,UVA_data,UVA_data,(int)temp,(int)hum,light_res);
-		sprintf(socketInfo.outBuffer, API_SenSorData_Sendpack, btcInfo.apiId, btcInfo.userID, btcInfo.deviceID,(int)temp,(int)hum,light_res,UVA_data,UVA_data,lx);
+//		printf("lux : %d  UVA = %d   UVB = %d  Temp= %d  Hum = %d light_res = %d \n\r",lx,UVA_data,UVB_data,(int)temp,(int)hum,light_res);
+		sprintf(socketInfo.outBuffer, API_SenSorData_Sendpack, btcInfo.apiId, btcInfo.userID, btcInfo.deviceID,(int)temp,(int)hum,light_res,UVA_data,UVB_data,lx);
 		netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);
 		printf("OutBUffer = %s\n\r",socketInfo.outBuffer);
 		memset(btcInfo.configBuffer,0,sizeof(btcInfo.configBuffer));		

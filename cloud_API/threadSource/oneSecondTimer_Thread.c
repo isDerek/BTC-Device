@@ -14,6 +14,7 @@ void oneSecondTimer_thread(void *arg){
 		if(ConnectAuthorizationFlag)
 		{
 			sensorPeriodTmr ++;
+//			printf("sensorTmr = %d\n\r",sensorPeriodTmr);
 			if(sensorPeriodTmr % 60 == 0)
 			{
 				sensorTxDataFlag = true;

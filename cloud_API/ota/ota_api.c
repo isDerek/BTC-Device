@@ -53,9 +53,9 @@ void OTAInit(void)
 						tempBuffer[5] = tempBuffer[8] = (binTotalSize >> 8) & 0xff;  // first boot otabin is  real size
 					  tempBuffer[6] = tempBuffer[9] =	(binTotalSize) & 0xff;  // first boot otabin is  real size
 					  tempBuffer[10] = '1'; // first boot flag
-						tempBuffer[11] = btcInfo.deviceRegister; // register flag
-						tempBuffer[12] = btcInfo.userID; // userID
-						tempBuffer[13] = btcInfo.deviceID; // deviceID
+						tempBuffer[11] = 0; // register flag
+						tempBuffer[12] = 0; // userID
+						tempBuffer[13] = 0; // deviceID
 						sprintf(versionSN,"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",otaInfo.versionSN[0],otaInfo.versionSN[1],otaInfo.versionSN[2],otaInfo.versionSN[3],otaInfo.versionSN[4],otaInfo.versionSN[5],otaInfo.versionSN[6],otaInfo.versionSN[7],otaInfo.versionSN[8],otaInfo.versionSN[9],otaInfo.versionSN[10],otaInfo.versionSN[11],otaInfo.versionSN[12],otaInfo.versionSN[13],otaInfo.versionSN[14],otaInfo.versionSN[15]);
 //						printf("×ª»»ºó :%s\n\r",versionSN);	
 						sprintf(tempBuffer+14,"%s",versionSN);

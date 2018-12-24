@@ -2,7 +2,7 @@
 //#define API_AUTH_Sendpack "{\"apiId\":%d,\"versionSN\":\"%s\",\"mac\":\"%s\",\"reconnect\":%d}"		//cloud api
 #define API_AUTH_Sendpack "{\"apiId\":%d,\"versionSN\":\"%s\",\"mac\":\"%02x%02x%02x%02x%02x%02x\",\"userId\":%d,\"deviceId\":%d}"		//cloud api
 #define API_Heartpack_Sendpack "{\"apiId\":%d}"
-#define API_SenSorData_Sendpack "{\"apiId\":%d,\"userId\":%d,\"deviceId\":%d,\"sensorData\":[\"Temp\":%d,\"HUMIDITY\":%d,\"LIGHT_RES\":%d,\"UVA\":%d,\"UVB\":%d,\"LUX_INT\":%d]}"
+#define API_SenSorData_Sendpack "{\"apiId\":%d,\"userId\":%d,\"deviceId\":%d,\"sensorData\":{\"temp\":%d,\"humidity\":%d,\"lightRes\":%d,\"uva\":%d,\"uvb\":%d,\"luxInt\":%d}}"
 #define API_SendData_Response "{\"apiId\":%d,\"respCode\":%d,\"msgId\":\"%s\"}"
 
 
