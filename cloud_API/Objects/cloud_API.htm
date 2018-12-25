@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\cloud_API.out]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\cloud_API.out</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Dec 25 11:00:47 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Dec 25 14:45:48 2018
 <BR><P>
 <H3>Maximum Stack Usage =        728 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1023,6 +1023,7 @@ Global Symbols
 <LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Welcome
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switchMoudle
 <LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showUserDEF
+<LI><a href="#[272]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;notifyHandle
 </UL>
 
 <P><STRONG><a name="[e6]"></a>BOARD_BootClockRUN</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, clock_config.o(i.BOARD_BootClockRUN))
@@ -1810,6 +1811,7 @@ Global Symbols
 <LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Welcome
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switchMoudle
 <LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showUserDEF
+<LI><a href="#[272]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;notifyHandle
 </UL>
 
 <P><STRONG><a name="[15e]"></a>OLED_Welcome</STRONG> (Thumb, 166 bytes, Stack size 80 bytes, sensor.o(i.OLED_Welcome))
@@ -1917,7 +1919,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PHY_Init
 </UL>
 
-<P><STRONG><a name="[4a]"></a>PORTC_IRQHandler</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, gpio_api.o(i.PORTC_IRQHandler))
+<P><STRONG><a name="[4a]"></a>PORTC_IRQHandler</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, gpio_api.o(i.PORTC_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = PORTC_IRQHandler &rArr; GPIO_ClearPinsInterruptFlags &rArr; GPIO_GetInstance &rArr; __aeabi_assert &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPinsInterruptFlags
@@ -3503,14 +3505,16 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Network_Init
 </UL>
 
-<P><STRONG><a name="[272]"></a>notifyHandle</STRONG> (Thumb, 176 bytes, Stack size 40 bytes, workhandle.o(i.notifyHandle))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = notifyHandle &rArr; netconn_write_partly &rArr; netconn_apimsg &rArr; tcpip_send_msg_wait_sem &rArr; sys_mutex_unlock &rArr; xQueueGenericSend &rArr; vTaskPlaceOnEventList &rArr; prvAddCurrentTaskToDelayedList &rArr; vListInsert
+<P><STRONG><a name="[272]"></a>notifyHandle</STRONG> (Thumb, 372 bytes, Stack size 48 bytes, workhandle.o(i.notifyHandle))
+<BR><BR>[Stack]<UL><LI>Max Depth = 448<LI>Call Chain = notifyHandle &rArr; API_OLED_Clear &rArr; OLED_Set_Pos &rArr; I2C_Write_polling &rArr; I2C_MasterTransferBlocking &rArr; I2C_MasterRepeatedStart &rArr; delay_30ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netconn_write_partly
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getADCValue
 <LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VEML6075_Run
 <LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VEML6030_Run
+<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowStr
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HDC1050_Run
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;API_OLED_Clear
 <LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
@@ -3519,7 +3523,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;workHandle_thread
 </UL>
 
-<P><STRONG><a name="[ab]"></a>oneSecondTimer_thread</STRONG> (Thumb, 124 bytes, Stack size 0 bytes, onesecondtimer_thread.o(i.oneSecondTimer_thread))
+<P><STRONG><a name="[ab]"></a>oneSecondTimer_thread</STRONG> (Thumb, 166 bytes, Stack size 0 bytes, onesecondtimer_thread.o(i.oneSecondTimer_thread))
 <BR><BR>[Stack]<UL><LI>Max Depth = 480<LI>Call Chain = oneSecondTimer_thread &rArr; OLED_Welcome &rArr; API_OLED_Clear &rArr; OLED_Set_Pos &rArr; I2C_Write_polling &rArr; I2C_MasterTransferBlocking &rArr; I2C_MasterRepeatedStart &rArr; delay_30ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
@@ -5122,7 +5126,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[aa]"></a>workHandle_thread</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, workhandle.o(i.workHandle_thread))
-<BR><BR>[Stack]<UL><LI>Max Depth = 432<LI>Call Chain = workHandle_thread &rArr; apiHandle &rArr; switchMoudle &rArr; RGB_Show &rArr; API_OLED_Clear &rArr; OLED_Set_Pos &rArr; I2C_Write_polling &rArr; I2C_MasterTransferBlocking &rArr; I2C_MasterRepeatedStart &rArr; delay_30ms
+<BR><BR>[Stack]<UL><LI>Max Depth = 448<LI>Call Chain = workHandle_thread &rArr; notifyHandle &rArr; API_OLED_Clear &rArr; OLED_Set_Pos &rArr; I2C_Write_polling &rArr; I2C_MasterTransferBlocking &rArr; I2C_MasterRepeatedStart &rArr; delay_30ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[272]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;notifyHandle

@@ -71,3 +71,9 @@ extern int oledUserTimer; // oled 用户使用了自定义界面开始计时
 
 extern bool sensorTxDataFlag; // Sensor 数据推送标志位
 
+extern bool sw1PressBtn; // SW1 按下标志位
+extern bool sw2PressBtn; // SW2 按下标志位
+extern int sw1Status; // SW1 状态
+extern int sw2Status; // SW2 状态
+extern int swTimer; // 按键界面展示时间
+extern bool startSWTmr; // 开始按键展示时间计时标志位 

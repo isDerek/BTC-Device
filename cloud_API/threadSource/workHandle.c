@@ -90,25 +90,6 @@ void api_OTA_Handle()
 	sprintf(socketInfo.outBuffer,CMD_RESP_otaUpdate ,btcInfo.msgId,btcInfo.apiId,respCode);
 	netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);	
 }
-void test_OTA_Handle()
-{
-	char* cdata = (char*)VERSION_STR_ADDRESS;
-	int otacodechecksum = (cdata[2]<<8)|cdata[3];
-	printf("otacodechecksum = %d\n\r, otaInof.checkSum = %d \n\r",otacodechecksum,otaInfo.checkSum);
-	if(otacodechecksum != otaInfo.checkSum)
-	{	
-		respCode = 100;
-		eventHandle.getLatestFWFromServerFlag = true; 
-	}
-	else
-	{
-		respCode = 101;
-		eventHandle.getLatestFWFromServerFlag = false; 
-	}
-	btcInfo.apiId = 24;
-	sprintf(socketInfo.outBuffer,CMD_RESP_otaUpdate ,btcInfo.msgId,btcInfo.apiId,respCode);
-	netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);		
-}
 
 void switchMoudle()
 {
@@ -225,10 +206,6 @@ void apiHandle(int apiId)
 		case API_RES_SERVER_SEND:
 			switchMoudle();		
 			break;
-
-//		case 24:
-//			test_OTA_Handle();
-//			break;
 		default:
 			break;
 	}
@@ -251,6 +228,53 @@ void notifyHandle(){
 		memset(btcInfo.configBuffer,0,sizeof(btcInfo.configBuffer));		
 		sensorTxDataFlag = false;
 		btcInfo.apiId = 0;
+	}
+	if((sw1PressBtn == true || sw2PressBtn == true )&& ConnectAuthorizationFlag)
+	{
+		swTimer = 0;
+		char *sw1StatusPr = "SW1 = ";
+		char *sw2StatusPr = "SW2 = ";
+		char *on = "ON";
+		char *off = "OFF";
+		API_OLED_Clear();
+		if(sw1PressBtn == true)
+		{
+			OLED_ShowStr(0, 0, (uint8_t*)sw1StatusPr);
+			switch(sw1Status)
+			{
+				case 1:
+					sw1Status = 0;
+					OLED_ShowStr(48, 0, (uint8_t*)off);
+					break;
+				case 0:
+					sw1Status = 1;
+					OLED_ShowStr(48, 0, (uint8_t*)on);
+					break;
+				default:
+					break;
+			}
+		}
+		if(sw2PressBtn == true)
+		{
+			OLED_ShowStr(0, 0, (uint8_t*)sw2StatusPr);
+			switch(sw2Status)
+			{
+				case 1:
+					sw2Status = 0;
+					OLED_ShowStr(48, 0, (uint8_t*)off);
+					break;
+				case 0:
+					sw2Status = 1;
+					OLED_ShowStr(48, 0, (uint8_t*)on);
+					break;
+				default:
+					break;
+			}
+			
+		}
+		startSWTmr = true;
+		sw1PressBtn = false;
+		sw2PressBtn = false;
 	}
 }
 void workHandle_thread(void *arg){

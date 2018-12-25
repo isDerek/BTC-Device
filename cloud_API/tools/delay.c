@@ -18,3 +18,12 @@ void delay_s(void)
        delay_30ms(); /* delay */
     }
 }
+
+void delay_xs(int a)
+{
+	  volatile uint32_t i = 0U;
+    for (i = 0U; i < 33U*a; i++)
+    {
+       delay_30ms(); /* delay */
+    }	
+}
