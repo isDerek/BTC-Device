@@ -13,7 +13,7 @@
 #define BOOTLOADER_SIZE             0x8000   // 32K  
 #define CODE_SECTOR_NUM             32   // 32*4K Bytes    8*4K for bootloader total 160KB
 #define MIN_CODE_SECTOR_NUM         16 // 16*4K Bytes minimal code size,  code size always > 90 KB
-#define SECTOR_SIZE     						4096
+#define SECTOR_SIZE     						4096 // 4096
 #define CODE_START_ADDRESS          (BOOTLOADER_SIZE)//0
 #define CODE_SIZE                   (CODE_SECTOR_NUM * SECTOR_SIZE)
 #define OTA_CODE_START_ADDRESS      (CODE_START_ADDRESS + CODE_SIZE)

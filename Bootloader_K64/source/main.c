@@ -8,6 +8,7 @@
 #include "md5Std.h"
 #include "lib_crc16.h"
 
+#include "tools.h"
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
@@ -98,9 +99,11 @@ int main ()
 			//appTotalSize = calculateBinSize(codePartition,20);
 			md5Calculate((unsigned char*)OTACodePartition,otaTotalSize,(unsigned char*)calculateOTAVersion);
 			md5Calculate((unsigned char*)codePartition,appTotalSize,(unsigned char*)calculateAPPVersion);
+			printf("appmd5 = %02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x\n\r",calculateAPPVersion[0],calculateAPPVersion[1],calculateAPPVersion[2],calculateAPPVersion[3],calculateAPPVersion[4],calculateAPPVersion[5],calculateAPPVersion[6],calculateAPPVersion[7],calculateAPPVersion[8],calculateAPPVersion[9],calculateAPPVersion[10],calculateAPPVersion[11],calculateAPPVersion[12],calculateAPPVersion[13],calculateAPPVersion[14],calculateAPPVersion[15]);			
+			printf("otamd5 = %02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x\n\r",calculateOTAVersion[0],calculateOTAVersion[1],calculateOTAVersion[2],calculateOTAVersion[3],calculateOTAVersion[4],calculateOTAVersion[5],calculateOTAVersion[6],calculateOTAVersion[7],calculateOTAVersion[8],calculateOTAVersion[9],calculateOTAVersion[10],calculateOTAVersion[11],calculateOTAVersion[12],calculateOTAVersion[13],calculateOTAVersion[14],calculateOTAVersion[15]);
 			sprintf(versionBuffer,"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",calculateOTAVersion[0],calculateOTAVersion[1],calculateOTAVersion[2],calculateOTAVersion[3],calculateOTAVersion[4],calculateOTAVersion[5],calculateOTAVersion[6],calculateOTAVersion[7],calculateOTAVersion[8],calculateOTAVersion[9],calculateOTAVersion[10],calculateOTAVersion[11],calculateOTAVersion[12],calculateOTAVersion[13],calculateOTAVersion[14],calculateOTAVersion[15]);		
-			codecrc16 = calculate_crc16(codePartition, appTotalSize);
-			otacodecrc16 = calculate_crc16(OTACodePartition, otaTotalSize);			
+			codecrc16 = calculate_crc16(codePartition, appTotalSize);	
+			otacodecrc16 = calculate_crc16(OTACodePartition, otaTotalSize);		
 			printf("otacodecrc16 = %x, otacodechecksum = %x, codechecksum= %x, codecrc16 = %x otaTotalSize = %d appTotalSize = %d OTAversionSN = %s\n\r",otacodecrc16,otacodechecksum,codechecksum,codecrc16,otaTotalSize,appTotalSize,versionBuffer);						
 			if(strcmp(versionBuffer,cdata+14)==NULL)
 			{	
@@ -129,9 +132,9 @@ int main ()
 					tempBuffer[5] = tempBuffer[8] =(otaTotalSize >> 8) & 0xff;// otatotal real size
 					tempBuffer[6] = tempBuffer[9] =(otaTotalSize) & 0xff;// otatotal real size
 					tempBuffer[10] = '1';
-					tempBuffer[11] = 0;
-					tempBuffer[12] = 0;
-					tempBuffer[13] = 0;					
+					tempBuffer[11] = cdata[11];
+					tempBuffer[12] = cdata[12];
+					tempBuffer[13] = cdata[13];					
 					for(i=14;i<VERSION_STR_LEN;i++)
 					tempBuffer[i] = cdata[i];
 					erase_sector(VERSION_STR_ADDRESS);
@@ -167,9 +170,9 @@ int main ()
 					tempBuffer[5] = tempBuffer[8] =(otaTotalSize >> 8) & 0xff;// otatotal real size
 					tempBuffer[6] = tempBuffer[9] =(otaTotalSize) & 0xff;// otatotal real size
 					tempBuffer[10] = '1';
-					tempBuffer[11] = 0;
-					tempBuffer[12] = 0;
-					tempBuffer[13] = 0;
+					tempBuffer[11] = cdata[11];
+					tempBuffer[12] = cdata[12];
+					tempBuffer[13] = cdata[13];
 					sprintf(tempBuffer+14,"%s",versionBuffer);
 					erase_sector(VERSION_STR_ADDRESS);
 					program_flash(VERSION_STR_ADDRESS,(uint32_t *)tempBuffer, 256);

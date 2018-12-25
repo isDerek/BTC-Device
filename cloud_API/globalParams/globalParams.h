@@ -13,7 +13,7 @@ typedef struct _OTAInfo {
 	  int blockOffset;      
 		int blockSize;        
 		int versionSize;      
-		int checkSum ;   
+		int checkSum ;
 		char versionSN[33];   
 } OTAInfo;
 

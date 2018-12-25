@@ -194,11 +194,20 @@ void switchMoudle()
 			memset(btcInfo.configBuffer,0,sizeof(btcInfo.configBuffer));
 			oledUserFlag = true;
 			break;
+		case 100:
+			otaInfo.versionSize = btcInfo.configBuffer[1];
+			otaInfo.checkSum = btcInfo.configBuffer[2];
+			printf("versionSN = %s versionSize = %d checkSum = %x\n\r",otaInfo.versionSN,otaInfo.versionSize,otaInfo.checkSum);
+			sprintf(socketInfo.outBuffer, API_SendData_Response, btcInfo.apiId, ERR_Success, btcInfo.msgId);
+			netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);
+			memset(btcInfo.configBuffer,0,sizeof(btcInfo.configBuffer));
+			eventHandle.getLatestFWFromServerFlag = true;
+			break;
 		default:
 			break;
 	}
 }
-int i =1;
+
 void apiHandle(int apiId)
 {
 	switch(apiId){
@@ -208,10 +217,10 @@ void apiHandle(int apiId)
 		case API_RES_Heartpack:
 			api_HeartPack_Handle();
 			break;
-		case API_RES_SendData:
-			break;
+//		case API_RES_SendData:
+//			break;
 		case API_RES_OTA:
-			api_OTA_Handle();
+//			api_OTA_Handle();
 			break;
 		case API_RES_SERVER_SEND:
 			switchMoudle();		

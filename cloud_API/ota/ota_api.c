@@ -43,7 +43,7 @@ void OTAInit(void)
 //				printf("binTotalSize = %d\n\r",binTotalSize);
 				codecrc16 = calculate_crc16(codePartition,binTotalSize);
         otacodecrc16 = calculate_crc16(OTACodePartition, binTotalSize);
-				printf("otacodecrc16 = %x codecrc16 = %x\n\r",otacodecrc16, codecrc16);
+				printf("otacodecrc16 = %x codecrc16 = %x bintotalSize = %d\n\r",otacodecrc16, codecrc16,binTotalSize);
         if(otacodecrc16 == codecrc16) {
             memset(tempBuffer,0x0,VERSION_STR_LEN);
 					/*   tempBuffer[0],tempBuffer[1] = appcodechecksum && tempBuffer[2],tempBuffer[3] = otacodechecksum */
@@ -67,12 +67,13 @@ void OTAInit(void)
 				NVIC_SystemReset();  
     } else {		
 						binTotalSize = calculateBinSize(codePartition,20);
+						printf("bintotalSize = %d\n\r",binTotalSize);
 						md5Calculate(appStartAddress,binTotalSize,(unsigned char*)otaInfo.versionSN);
 						sprintf(versionSN,"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",otaInfo.versionSN[0],otaInfo.versionSN[1],otaInfo.versionSN[2],otaInfo.versionSN[3],otaInfo.versionSN[4],otaInfo.versionSN[5],otaInfo.versionSN[6],otaInfo.versionSN[7],otaInfo.versionSN[8],otaInfo.versionSN[9],otaInfo.versionSN[10],otaInfo.versionSN[11],otaInfo.versionSN[12],otaInfo.versionSN[13],otaInfo.versionSN[14],otaInfo.versionSN[15]);
 						
 						printf("Current APP checksum: %2X%2X OTA checksum: %2X%2X  otaBintotal: %d  appBintotal: %d  versionSN:  %s \n\r",cdata[0],cdata[1],cdata[2],cdata[3],(cdata[4]<<16)|(cdata[5]<<8)|(cdata[6]),(cdata[7]<<16)|(cdata[8]<<8)|(cdata[9]),cdata+14);
 						sprintf(otaInfo.versionSN,"%s",versionSN);	
-//						printf("otaInfo.versionSN =  %s\n\r",otaInfo.versionSN);
+						printf("otaInfo.versionSN =  %s\n\r",otaInfo.versionSN);
             printf("the FW is already the newest!\r\n");
     }
 

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\bootloader.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\bootloader.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Mon Dec 24 11:32:19 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Dec 25 11:04:25 2018
 <BR><P>
 <H3>Maximum Stack Usage =        772 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -846,8 +846,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 40 + Unknown Stack Size
 <LI>Call Chain = __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_is_digit
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_percent
+<BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_percent
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_is_digit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
 </UL>
@@ -1047,10 +1047,10 @@ Global Symbols
 <P><STRONG><a name="[d0]"></a>CLOCK_GetOutClkFreq</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, fsl_clock.o(i.CLOCK_GetOutClkFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 380<LI>Call Chain = CLOCK_GetOutClkFreq &rArr; CLOCK_GetFllFreq &rArr; CLOCK_GetFllRefClkFreq &rArr; CLOCK_GetFllExtRefClkFreq &rArr; CLOCK_GetMcgExtClkFreq &rArr; __aeabi_assert &rArr; DbgConsole_Printf &rArr;  LOG_Push (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetMcgExtClkFreq
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetInternalRefClkSelectFreq
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllFreq
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetMcgExtClkFreq
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetInternalRefClkSelectFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetCoreSysClkFreq
 </UL>
@@ -1452,11 +1452,11 @@ Global Symbols
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IO_Init
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_BootToPeeMode
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DbgConsole_Init
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_EnablePll0
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetMcgExtClkFreq
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_GetInstance
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_SetPbeMode
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_EnablePll0
 </UL>
 
 <P><STRONG><a name="[b9]"></a>_is_digit</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, __printf_wp.o(i._is_digit))
@@ -1528,7 +1528,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> _printf_char_file.o(.text)
 </UL>
-<P><STRONG><a name="[aa]"></a>main</STRONG> (Thumb, 774 bytes, Stack size 296 bytes, main.o(i.main))
+<P><STRONG><a name="[aa]"></a>main</STRONG> (Thumb, 974 bytes, Stack size 296 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 772 + Unknown Stack Size
 <LI>Call Chain = main &rArr; BOARD_InitDebugConsole &rArr; DbgConsole_Init &rArr; LOG_Init &rArr; IO_Init &rArr; UART_Init &rArr; UART_GetInstance &rArr; __aeabi_assert &rArr; DbgConsole_Printf &rArr;  LOG_Push (Cycle)
 </UL>
@@ -1542,10 +1542,10 @@ Global Symbols
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BOARD_BootClockRUN
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Jump_IAP
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SystemReset
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncmp
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncmp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
@@ -1596,8 +1596,8 @@ Global Symbols
 <P><STRONG><a name="[119]"></a>md5Update</STRONG> (Thumb, 140 bytes, Stack size 32 bytes, md5.o(i.md5Update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 332<LI>Call Chain = md5Update &rArr; md5Transform &rArr; md5Decode
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;md5Transform
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;md5Transform
 </UL>
 <BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;md5Calculate
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;md5Final
@@ -1766,9 +1766,9 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_assert
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0RefFreq
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOutClkFreq
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0RefFreq
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllExtRefClkFreq
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOutClkFreq
 </UL>
 
 <P><STRONG><a name="[d8]"></a>CLOCK_GetOscRangeFromFreq</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, fsl_clock.o(i.CLOCK_GetOscRangeFromFreq))

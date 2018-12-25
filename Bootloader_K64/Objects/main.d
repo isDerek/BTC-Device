@@ -25,3 +25,4 @@
 .\objects\main.o: .\drivers_api\K64_api.h
 .\objects\main.o: .\md5\md5Std.h
 .\objects\main.o: .\crc16\lib_crc16.h
+.\objects\main.o: .\tools\tools.h

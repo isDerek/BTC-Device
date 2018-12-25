@@ -11,6 +11,9 @@
 #include "ota.h"
 #include "stdlib.h"
 #include "tools.h"
+
+
+#include "md5Std.h"
 //u16_t port = 55551; // Cloud API
 u16_t port = 61111;
 //u16_t port = 44441;
@@ -73,7 +76,8 @@ void parseBincodeBuffer(char *text)
 								int iapCode;
 							  strcpy(versionSN,otaInfo.versionSN);
 								__disable_irq();
-								erase_sector(OTA_CODE_START_ADDRESS+blockOffset);
+//								erase_sector(OTA_CODE_START_ADDRESS+blockOffset);
+//								erase_DefSize(OTA_CODE_START_ADDRESS+blockOffset,blockSize);
 								iapCode = program_flash(OTA_CODE_START_ADDRESS + blockOffset,(uint32_t *)buf, blockSize);  							
 								otaInfo.blockOffset = blockOffset;
 								strcpy(otaInfo.versionSN,versionSN);
@@ -82,7 +86,9 @@ void parseBincodeBuffer(char *text)
 								printf("crc16 rewrite before = %x\n\r",crc16);
 								while(crc16 != checksum && reWrite < 10){   //try to rewrite data when verify failed
 									printf("rewrite \r\n");
-									erase_sector(OTA_CODE_START_ADDRESS+blockOffset);
+									
+//									erase_sector(OTA_CODE_START_ADDRESS+blockOffset);
+									erase_DefSize(OTA_CODE_START_ADDRESS+blockOffset,blockSize);
 									iapCode = program_flash(OTA_CODE_START_ADDRESS + blockOffset,(uint32_t *)buf, len1-BINDATA_POS); 
 									printf("iapCode=%d\r\n",iapCode);
 									crc16 = calculate_crc16((char*)(OTA_CODE_START_ADDRESS + blockOffset),len1-BINDATA_POS);
@@ -100,7 +106,7 @@ void parseBincodeBuffer(char *text)
 									printf("write failed!\r\n");
 									eventHandle.getLatestFWFromServerFlag = false;   //stop update!
 									NVIC_SystemReset();  //restart to recover ota
-									}					
+								}					
             }	
          
         }
@@ -172,6 +178,22 @@ void parseRecvMsgInfo(char *text)
 							}					
 						}					
 					}
+					else if(btcInfo.module == 100)
+					{
+						for(int i = 0; i<size ; i++)
+						{
+							if(i == 0)
+							{
+								cJSON *object = cJSON_GetArrayItem(array,i);
+								sprintf(otaInfo.versionSN,"%s",object->valuestring);
+							}
+							else
+							{
+								cJSON *object = cJSON_GetArrayItem(array,i);
+								btcInfo.configBuffer[i] = object->valueint;
+							}
+						}
+					}
 					else
 					{
 						for(int i = 0; i<size ; i++)
@@ -221,23 +243,30 @@ void OTAUpdate()
 	int otacrc16,codecrc16;			
 	char* cdata = (char*)VERSION_STR_ADDRESS;
 	int appBinTotalSize;
-	upDateCount = (otaInfo.versionSize / 4096) + 1;//512
+	upDateCount = (otaInfo.versionSize / 1024) + 1;//512
 	PRINTF("UPdateCount = %d ¡\\r\n",upDateCount);
+	__disable_irq();
+   for(int i=0; i<CODE_SECTOR_NUM; i++) {
+     erase_sector(OTA_CODE_START_ADDRESS+i*SECTOR_SIZE);
+   }
+	 __enable_irq();
 	for(upDateBinCounter = 0;upDateBinCounter<upDateCount;upDateBinCounter++)
 	{		
 		btcInfo.apiId = 4;
-		otaInfo.blockSize = 4096;	//512
-		otaInfo.blockOffset = 4096;//512				
+		otaInfo.blockSize = 1024;	//512
+		otaInfo.blockOffset = 1024;//512				
 		sprintf(socketInfo.outBuffer,NOTIFY_REQ_updateVersion,btcInfo.apiId,otaInfo.versionSN,otaInfo.blockOffset*upDateBinCounter,otaInfo.blockSize);
     len = strlen(socketInfo.outBuffer);
 		printf("notifyMsgSendHandle,send %d bytes: %s\r\n",len,socketInfo.outBuffer);
 		netconn_write(tcpsocket,socketInfo.outBuffer,len,1);
-    recvMsgHandle();	
+    recvMsgHandle();
+		delay_30ms();
 	}
 	recvMsgHandle();	// if network slower than receive, this can receive otabin
 	appBinTotalSize = (cdata[7]<<16)|(cdata[8]<<8)|(cdata[9]);
 	codecrc16 = calculate_crc16((char*)(CODE_START_ADDRESS), appBinTotalSize);
 	otacrc16 = calculate_crc16((char*)(OTA_CODE_START_ADDRESS), otaBinTotalSize);
+	printf("appcrc16 = %x, otacrc16 = %x\n\r",codecrc16,otacrc16);
 	memset(tempBuffer,0x0,VERSION_STR_LEN);		
 	tempBuffer[0] = (codecrc16 >> 8) & 0xff;  // appcodechecksum
 	tempBuffer[1] = codecrc16 & 0xff; // appcodechecksum			
@@ -250,10 +279,13 @@ void OTAUpdate()
 	tempBuffer[8] = (appBinTotalSize >> 8) & 0xff;// otatotal real size
 	tempBuffer[9] = (appBinTotalSize) & 0xff;// otatotal real size		
 	tempBuffer[10] = '1'; //1 means finish the first boot , 0 is not
+	tempBuffer[11] = cdata[11];
+	tempBuffer[12] = cdata[12];
+	tempBuffer[13] = cdata[13];
 	printf("otadownloadfinshedtotalsize = %d  appdownloadfinshedtotalsize = %d\n\r",otaBinTotalSize,appBinTotalSize);
-	sprintf(tempBuffer+11,"%s",otaInfo.versionSN);
+	sprintf(tempBuffer+14,"%s",otaInfo.versionSN);
+	printf("tempBuffer +14  = %s otacrc16 = %x otaInfo.checkSum = %x \n\r",tempBuffer+14,otacrc16,otaInfo.checkSum);
 	__disable_irq();
-	printf("tempbuff = %d \n\r", strlen(tempBuffer));
 	erase_sector(VERSION_STR_ADDRESS);
 	program_flash(VERSION_STR_ADDRESS,(uint32_t *)tempBuffer, 256);
 	__enable_irq();
@@ -261,7 +293,7 @@ void OTAUpdate()
 	{	
 		btcInfo.deviceStatus = 10;
 //		notifyMsgSendHandle(notifyOTAResult);
-		btcInfo.apiId = 3;			
+		btcInfo.apiId = 4 ;			
 		sprintf(socketInfo.outBuffer,NOTIFY_REQ_otaDeviceStatus,btcInfo.apiId,btcInfo.deviceStatus);
 		len = strlen(socketInfo.outBuffer);
 		printf("notifyMsgSendHandle,send %d bytes: %s\r\n",len,socketInfo.outBuffer);
@@ -270,15 +302,14 @@ void OTAUpdate()
 	else
 	{
 		btcInfo.deviceStatus = 11;
-		btcInfo.apiId = 3;			
+		btcInfo.apiId = 4;			
 		sprintf(socketInfo.outBuffer,NOTIFY_REQ_otaDeviceStatus,btcInfo.apiId,btcInfo.deviceStatus);
 		len = strlen(socketInfo.outBuffer);
 		printf("notifyMsgSendHandle,send %d bytes: %s\r\n",len,socketInfo.outBuffer);
 		netconn_write(tcpsocket,socketInfo.outBuffer,len,NETCONN_COPY);
-	}				
+	}		
 	updateCode();	
 }
-int a = 1;
 void connect_thread(void *arg)
 {	
   LWIP_UNUSED_ARG(arg);	
@@ -305,7 +336,6 @@ void connect_thread(void *arg)
 		{
 			if(!ConnectAuthorizationFlag)
 			{
-				if(a == 1){
 				char* cdata = (char*)VERSION_STR_ADDRESS;
 				btcInfo.userID = cdata[12];
 				btcInfo.deviceID = cdata[13];
@@ -320,8 +350,6 @@ void connect_thread(void *arg)
 				netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);
 				printf("socketInfo.outBuffer = %s \n\r",socketInfo.outBuffer);
 				delay_s();
-					a = 0;
-				}
 			}
 			else
 			{

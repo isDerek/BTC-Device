@@ -17,7 +17,7 @@ void oneSecondTimer_thread(void *arg){
 //			printf("sensorTmr = %d\n\r",sensorPeriodTmr);
 			if(sensorPeriodTmr % 60 == 0)
 			{
-				sensorTxDataFlag = true;
+				sensorTxDataFlag = true; // test ota
 				sensorPeriodTmr = 0;
 			}
 			if(oledUserFlag == true)

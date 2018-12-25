@@ -61,3 +61,4 @@
 .\objects\network_thread.o: .\ota\ota.h
 .\objects\network_thread.o: E:\KEIL\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\network_thread.o: .\tools\tools.h
+.\objects\network_thread.o: .\md5\md5Std.h

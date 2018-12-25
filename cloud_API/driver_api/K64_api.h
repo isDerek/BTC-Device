@@ -16,6 +16,8 @@ int getADCValue(void);
 
 void flash_init(void);
 
+int erase_DefSize(uint32_t start, int size);
+
 int erase_sector(uint32_t start);
 
 int program_flash(uint32_t start, uint32_t *src, uint32_t lengthInBytes);

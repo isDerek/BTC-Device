@@ -67,7 +67,35 @@ void flash_init(void)
 
 
 }
+int erase_DefSize(uint32_t start, int size)
+{
+	status_t result;    /* Return code from each flash driver function *///从每个闪存驱动程序函数返回代码
+    
+	/* Test pflash basic opeation only if flash is unsecure. *///仅在闪存不安全时测试其基本操作
+  if (kFLASH_SecurityStateNotSecure == securityStatus)
+  {
+    /* Debug message for user. */
+    /* Erase several sectors on upper pflash block where there is no code *///擦除 flash 上没有代码的扇区 
+//    printf("\r\n Erase a sector of flash");
+	}	
+	
+	
+	result = FLASH_Erase(&s_flashDriver, start, size, kFLASH_ApiEraseKey);
+	if (kStatus_FLASH_Success != result)
+  {
+    error_trap();
+  }
 
+  /* Verify sector if it's been erased. *///验证扇区是否被擦除
+  result = FLASH_VerifyErase(&s_flashDriver, start, size, kFLASH_MarginValueUser);
+  if (kStatus_FLASH_Success != result)
+  {
+    error_trap();
+  }
+  /* Print message for user. */
+  printf("\r\n Successfully Erased Sector 0x%x -> 0x%x\r\n", start, (start + size));
+	return 1;	
+}
 int erase_sector(uint32_t start)
 {
 	status_t result;    /* Return code from each flash driver function *///从每个闪存驱动程序函数返回代码
@@ -94,7 +122,7 @@ int erase_sector(uint32_t start)
     error_trap();
   }
   /* Print message for user. */
-//  printf("\r\n Successfully Erased Sector 0x%x -> 0x%x\r\n", start, (start + SECTOR_SIZE));
+  printf("\r\n Successfully Erased Sector 0x%x -> 0x%x\r\n", start, (start + SECTOR_SIZE));
 	return 1;
 }
 

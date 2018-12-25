@@ -47,6 +47,7 @@ void device_init()
 }
 int main(void)
 {
+		char a[1024];
     BOARD_InitPins();
     BOARD_BootClockRUN();
     BOARD_InitDebugConsole();
@@ -59,10 +60,20 @@ int main(void)
 	  flash_init();
 		OTAInit();	
 		device_init();
+//		__disable_irq();
+//		for(int i =0; i< 255; i++)
+//		{
+//			a[i] = i;
+//		}
+//		
+//		erase_DefSize(0x47c00,1024);
+//		program_flash(0x47c00,(uint32_t *)a,1024);
+//		__enable_irq();
 //	while(1)
 //	{
 //		
 //	}
+		printf("OTA Version 5.0!\n\r");
 		if(sys_thread_new("socket_connect", connect_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
 					LWIP_ASSERT("socket_init(): Task creation failed.", 0);
 		if(sys_thread_new("heartBeatTheard", heartBeat_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
