@@ -275,6 +275,11 @@ void notifyHandle(){
 		startSWTmr = true;
 		sw1PressBtn = false;
 		sw2PressBtn = false;
+		btcInfo.apiId = 3;
+		sprintf(socketInfo.outBuffer, API_SendKeyData_Sendpack, btcInfo.apiId, btcInfo.userID, btcInfo.deviceID,sw1Status,sw2Status);
+		netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);
+		printf("OutBUffer = %s\n\r",socketInfo.outBuffer);
+		memset(btcInfo.configBuffer,0,sizeof(btcInfo.configBuffer));				
 	}
 }
 void workHandle_thread(void *arg){

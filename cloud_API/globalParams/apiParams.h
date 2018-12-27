@@ -1,22 +1,10 @@
 
-//#define API_AUTH_Sendpack "{\"apiId\":%d,\"versionSN\":\"%s\",\"mac\":\"%s\",\"reconnect\":%d}"		//cloud api
 #define API_AUTH_Sendpack "{\"apiId\":%d,\"versionSN\":\"%s\",\"mac\":\"%02x%02x%02x%02x%02x%02x\",\"userId\":%d,\"deviceId\":%d}"		//cloud api
 #define API_Heartpack_Sendpack "{\"apiId\":%d}"
 #define API_SenSorData_Sendpack "{\"apiId\":%d,\"userId\":%d,\"deviceId\":%d,\"sensorData\":{\"temp\":%d,\"humidity\":%d,\"lightRes\":%d,\"uva\":%d,\"uvb\":%d,\"luxInt\":%d}}"
 #define API_SendData_Response "{\"apiId\":%d,\"respCode\":%d,\"msgId\":\"%s\"}"
+#define API_SendKeyData_Sendpack "{\"apiId\":%d,\"userId\":%d,\"deviceId\":%d,\"key\":{\"first\":%d,\"second\":%d}}"
 
-
-
-
-#define API_SendData_Response_FloatData "{\"apiId\":%d,\"respCode\":%d,\"result\":[%4.2f],\"msgId\":\"%s\"}"
-#define API_SendData_Response_IntData "{\"apiId\":%d,\"respCode\":%d,\"result\":[%d],\"msgId\":\"%s\"}"
-#define API_SendData_Response_TwoData "{\"apiId\":%d,\"respCode\":%d,\"result\":[%d,%d],\"msgId\":\"%s\"}"
-#define API_SendData_Response_ThreeData "{\"apiId\":%d,\"respCode\":%d,\"result\":[%3.2f,%3.2f,%3.2f],\"msgId\":\"%s\"}"
-
-#define API_PushDevice_Response "{\"apiId\":%d,\"deviceStatus\":%d,\"portStatus\":[%d,%d]}"
-#define API_OTA_Response "{\"apiId\":%d,\"versionSN\":%s,\"blockOffset\":%d,\"blockSize\":%d}"
-
-// test ota
 #define NOTIFY_REQ_updateVersion     "{\"apiId\":%d,\"versionSN\":\"%s\",\"blockOffset\":%d,\"blockSize\":%d}"
 #define CMD_RESP_otaUpdate           "{\"msgId\":\"%s\",\"apiId\":%d,\"respCode\":%d}"
 #define	NOTIFY_REQ_otaDeviceStatus	 "{\"apiId\":%d,\"deviceStatus\":%d}"	
@@ -54,17 +42,11 @@ enum API_RES
 };
 enum API_module
 {
-//    API_module_port = 1U, 
+
     API_module_pwm = 2U,      
     API_module_rgb = 3U,      
     API_module_oled = 4U,      
-    API_module_accel = 10U,
-		API_module_light = 11U,
-		API_module_uv = 12U,
-		API_module_temphumi = 13U,
-		API_module_pressure = 14U,
-		API_module_button = 15U,
-		API_module_ota = 100U,
+
 };
 
 

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\cloud_API.out]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\cloud_API.out</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Dec 25 14:45:48 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu Dec 27 08:42:02 2018
 <BR><P>
 <H3>Maximum Stack Usage =        728 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1141,14 +1141,14 @@ Global Symbols
 <P><STRONG><a name="[105]"></a>CLOCK_GetFreq</STRONG> (Thumb, 190 bytes, Stack size 16 bytes, fsl_clock.o(i.CLOCK_GetFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = CLOCK_GetFreq &rArr; CLOCK_GetFixedFreqClkFreq &rArr; CLOCK_GetOutClkFreq &rArr; CLOCK_GetFllFreq &rArr; CLOCK_GetFllRefClkFreq &rArr; CLOCK_GetFllExtRefClkFreq &rArr; CLOCK_GetMcgExtClkFreq &rArr; __aeabi_assert &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOutClkFreq
+<BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOutClkFreq
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOsc0ErClkFreq
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetInternalRefClkFreq
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllFreq
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFixedFreqClkFreq
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetEr32kClkFreq
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPllFllSelClkFreq
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[210]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_init
 <LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ftm_init
@@ -1175,10 +1175,10 @@ Global Symbols
 <P><STRONG><a name="[fd]"></a>CLOCK_GetOutClkFreq</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, fsl_clock.o(i.CLOCK_GetOutClkFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = CLOCK_GetOutClkFreq &rArr; CLOCK_GetFllFreq &rArr; CLOCK_GetFllRefClkFreq &rArr; CLOCK_GetFllExtRefClkFreq &rArr; CLOCK_GetMcgExtClkFreq &rArr; __aeabi_assert &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllFreq
+<BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllFreq
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetMcgExtClkFreq
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetInternalRefClkSelectFreq
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFreq
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFixedFreqClkFreq
@@ -1199,8 +1199,8 @@ Global Symbols
 <P><STRONG><a name="[106]"></a>CLOCK_GetPllFllSelClkFreq</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, fsl_clock.o(i.CLOCK_GetPllFllSelClkFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = CLOCK_GetPllFllSelClkFreq &rArr; CLOCK_GetFllFreq &rArr; CLOCK_GetFllRefClkFreq &rArr; CLOCK_GetFllExtRefClkFreq &rArr; CLOCK_GetMcgExtClkFreq &rArr; __aeabi_assert &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllFreq
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFreq
 </UL>
@@ -2149,7 +2149,6 @@ Global Symbols
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;connect_thread
 <LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adc_init
 <LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OTAInit
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;program_flash
 <LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;error_trap
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;erase_sector
@@ -2205,7 +2204,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOsc0ErClkFreq
+<BR>[Called By]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOsc0ErClkFreq
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetEr32kClkFreq
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_EnablePll0
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetMcgExtClkFreq
@@ -2236,7 +2236,6 @@ Global Symbols
 <LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENET_SetTxBufferDescriptors
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENET_SetRxBufferDescriptors
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_SetPbeMode
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC16_SetChannelConfig
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC16_Init
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC16_GetDefaultConfig
@@ -3173,7 +3172,7 @@ Global Symbols
 <LI><a href="#[215]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inet_chksum
 </UL>
 
-<P><STRONG><a name="[64]"></a>main</STRONG> (Thumb, 184 bytes, Stack size 8 bytes, btc_api.o(i.main))
+<P><STRONG><a name="[64]"></a>main</STRONG> (Thumb, 178 bytes, Stack size 8 bytes, btc_api.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 720<LI>Call Chain = main &rArr; Network_Init &rArr; netif_add &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ipv4_addr_changed &rArr; tcp_netif_ipv4_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_mutex_unlock &rArr; xQueueGenericSend &rArr; vTaskPlaceOnEventList &rArr; prvAddCurrentTaskToDelayedList &rArr; vListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[251]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskStartScheduler
@@ -3191,7 +3190,6 @@ Global Symbols
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BOARD_InitDebugConsole
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BOARD_BootClockRUN
 <LI><a href="#[24f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;device_init
-<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
@@ -3505,8 +3503,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Network_Init
 </UL>
 
-<P><STRONG><a name="[272]"></a>notifyHandle</STRONG> (Thumb, 372 bytes, Stack size 48 bytes, workhandle.o(i.notifyHandle))
-<BR><BR>[Stack]<UL><LI>Max Depth = 448<LI>Call Chain = notifyHandle &rArr; API_OLED_Clear &rArr; OLED_Set_Pos &rArr; I2C_Write_polling &rArr; I2C_MasterTransferBlocking &rArr; I2C_MasterRepeatedStart &rArr; delay_30ms
+<P><STRONG><a name="[272]"></a>notifyHandle</STRONG> (Thumb, 462 bytes, Stack size 56 bytes, workhandle.o(i.notifyHandle))
+<BR><BR>[Stack]<UL><LI>Max Depth = 456<LI>Call Chain = notifyHandle &rArr; API_OLED_Clear &rArr; OLED_Set_Pos &rArr; I2C_Write_polling &rArr; I2C_MasterTransferBlocking &rArr; I2C_MasterRepeatedStart &rArr; delay_30ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netconn_write_partly
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getADCValue
@@ -5126,7 +5124,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[aa]"></a>workHandle_thread</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, workhandle.o(i.workHandle_thread))
-<BR><BR>[Stack]<UL><LI>Max Depth = 448<LI>Call Chain = workHandle_thread &rArr; notifyHandle &rArr; API_OLED_Clear &rArr; OLED_Set_Pos &rArr; I2C_Write_polling &rArr; I2C_MasterTransferBlocking &rArr; I2C_MasterRepeatedStart &rArr; delay_30ms
+<BR><BR>[Stack]<UL><LI>Max Depth = 456<LI>Call Chain = workHandle_thread &rArr; notifyHandle &rArr; API_OLED_Clear &rArr; OLED_Set_Pos &rArr; I2C_Write_polling &rArr; I2C_MasterTransferBlocking &rArr; I2C_MasterRepeatedStart &rArr; delay_30ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[272]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;notifyHandle
