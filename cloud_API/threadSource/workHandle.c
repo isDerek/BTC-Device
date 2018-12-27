@@ -60,36 +60,6 @@ void api_HeartPack_Handle()
 //		printf("Heartbeat packet response completed.\r\n");
 	}		
 }
-void api_PushDevice_Handle()
-{
-	if(respCode == ERR_Success)
-	{	
-		printf("Device push response completed.\r\n");
-	}
-	else
-	{	
-		printf("Device push response failed.\r\n");
-	}	
-}
-void api_OTA_Handle()
-{
-	char* cdata = (char*)VERSION_STR_ADDRESS;
-	int otacodechecksum = (cdata[2]<<8)|cdata[3];
-	printf("otacodechecksum = %d\n\r, otaInof.checkSum = %d \n\r",otacodechecksum,otaInfo.checkSum);
-	if(otacodechecksum != otaInfo.checkSum)
-	{	
-		respCode = 100;
-		eventHandle.getLatestFWFromServerFlag = true; 
-	}
-	else
-	{
-		respCode = 101;
-		eventHandle.getLatestFWFromServerFlag = false; 
-	}
-	btcInfo.apiId = 24;
-	sprintf(socketInfo.outBuffer,CMD_RESP_otaUpdate ,btcInfo.msgId,btcInfo.apiId,respCode);
-	netconn_write(tcpsocket, socketInfo.outBuffer, strlen(socketInfo.outBuffer), 1);	
-}
 
 void switchMoudle()
 {
@@ -175,7 +145,7 @@ void switchMoudle()
 			memset(btcInfo.configBuffer,0,sizeof(btcInfo.configBuffer));
 			oledUserFlag = true;
 			break;
-		case 100:
+		case API_module_ota:
 			otaInfo.versionSize = btcInfo.configBuffer[1];
 			otaInfo.checkSum = btcInfo.configBuffer[2];
 			printf("versionSN = %s versionSize = %d checkSum = %x\n\r",otaInfo.versionSN,otaInfo.versionSize,otaInfo.checkSum);
@@ -197,11 +167,6 @@ void apiHandle(int apiId)
 			break;
 		case API_RES_Heartpack:
 			api_HeartPack_Handle();
-			break;
-//		case API_RES_SendData:
-//			break;
-		case API_RES_OTA:
-//			api_OTA_Handle();
 			break;
 		case API_RES_SERVER_SEND:
 			switchMoudle();		

@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>cloud_API.out</OutputName>
+          <OutputName>BTCI.out</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -1932,6 +1932,11 @@
               <FileName>oneSecondTimer_Thread.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\threadSource\oneSecondTimer_Thread.c</FilePath>
+            </File>
+            <File>
+              <FileName>exceptionHandle_Thread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\threadSource\exceptionHandle_Thread.c</FilePath>
             </File>
           </Files>
         </Group>

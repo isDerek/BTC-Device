@@ -11,33 +11,29 @@
 #include "ota.h"
 #include "stdlib.h"
 #include "tools.h"
-
-
 #include "md5Std.h"
-//u16_t port = 55551; // Cloud API
-u16_t port = 61111;
-//u16_t port = 44441;
-struct netconn *tcpsocket;
-struct netbuf  *TCPNetbuf;
-SocketInfo socketInfo;
-extern OTAInfo otaInfo;
-extern BTCInfo btcInfo;
 
-volatile bool showFlag = false;
-bool server_connect_Flag = false;
-//SocketInfo socketInfo;
-float x, y, z;//加速度
-int UVA_data, UVB_data;
-int lx;//光亮等级
-uint32_t persure;
-float temp, hum;
-int red, green, blue;
-int light_res;
-int respCode;
+u16_t port = 61111;  // 服务器的端口号
 
-u16_t len1;
-extern char tempBuffer[256];//need to be fixed, save data flash use this buffer;
-int otaBinTotalSize;
+struct netconn *tcpsocket;  // Socket 套接字
+struct netbuf  *TCPNetbuf; //网络数据 Buf
+SocketInfo socketInfo; // socket 结构体
+extern OTAInfo otaInfo; // ota 结构体
+extern BTCInfo btcInfo; // 设备信息结构体
+
+bool server_connect_Flag = false; // 设备是否连接服务器
+float x, y, z;//加速度传感器返回的值
+int UVA_data, UVB_data; // 紫外线传感器返回的值
+int lx;//光强传感器返回的值
+uint32_t persure; // 气压计返回的值
+float temp, hum; // 温湿度传感器返回的值
+int red, green, blue; // RGB 灯参数
+int light_res; // 光敏电阻参数
+int respCode;  // 响应状态
+
+u16_t len1; // socket 接收数据长度
+extern char tempBuffer[256];// 版本消息的 Buffer
+int otaBinTotalSize; // ota 版本文件大小
 
 /*
         HEADER     BLOCK OFFSET       BLOCK SIZE  CHECKSUM    Bin data
@@ -76,8 +72,6 @@ void parseBincodeBuffer(char *text)
 								int iapCode;
 							  strcpy(versionSN,otaInfo.versionSN);
 								__disable_irq();
-//								erase_sector(OTA_CODE_START_ADDRESS+blockOffset);
-//								erase_DefSize(OTA_CODE_START_ADDRESS+blockOffset,blockSize);
 								iapCode = program_flash(OTA_CODE_START_ADDRESS + blockOffset,(uint32_t *)buf, blockSize);  							
 								otaInfo.blockOffset = blockOffset;
 								strcpy(otaInfo.versionSN,versionSN);
@@ -86,8 +80,6 @@ void parseBincodeBuffer(char *text)
 								printf("crc16 rewrite before = %x\n\r",crc16);
 								while(crc16 != checksum && reWrite < 10){   //try to rewrite data when verify failed
 									printf("rewrite \r\n");
-									
-//									erase_sector(OTA_CODE_START_ADDRESS+blockOffset);
 									erase_DefSize(OTA_CODE_START_ADDRESS+blockOffset,blockSize);
 									iapCode = program_flash(OTA_CODE_START_ADDRESS + blockOffset,(uint32_t *)buf, len1-BINDATA_POS); 
 									printf("iapCode=%d\r\n",iapCode);

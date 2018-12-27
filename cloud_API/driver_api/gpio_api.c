@@ -30,16 +30,16 @@ void BOARD_SW1_IRQ_HANDLER(void)
 	PortCMask = GPIO_GetPinsInterruptFlags(SENSORSW1GPIO);
 	sw1Button = PortCMask&(0x1<<SENSORSW1PIN);
 	sw2Button = PortCMask&(0x1<<SENSORSW2PIN);
-	printf("PortCMask = %x\n\r",PortCMask);
+//	printf("PortCMask = %x\n\r",PortCMask);
 	GPIO_ClearPinsInterruptFlags(SENSORSW1GPIO, 1U << SENSORSW1PIN);
 	GPIO_ClearPinsInterruptFlags(SENSORSW2GPIO, 1U << SENSORSW2PIN);
 	if(sw1Button){
 		sw1PressBtn = true;
-		printf(" sw1 is pressed \r\n");
+//		printf(" sw1 is pressed \r\n");
 	}
 	if(sw2Button){
 		sw2PressBtn = true;
-		printf(" sw2 is pressed \r\n");
+//		printf(" sw2 is pressed \r\n");
 	}
     /* Add for ARM errata 838869, affects Cortex-M4, Cortex-M4F Store immediate overlapping
       exception return operation might vector to incorrect interrupt */

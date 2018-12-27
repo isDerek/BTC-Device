@@ -55,9 +55,5 @@
 .\objects\btc_api.o: .\devices\MK64F12\drivers\fsl_gpio.h
 .\objects\btc_api.o: pin_mux.h
 .\objects\btc_api.o: .\source\userConfig.h
-.\objects\btc_api.o: .\tools\tools.h
-.\objects\btc_api.o: E:\KEIL\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\btc_api.o: .\globalParams\globalParams.h
 .\objects\btc_api.o: .\cJSON\cJSON.h
-.\objects\btc_api.o: .\globalParams\apiParams.h
-.\objects\btc_api.o: .\source\flashLayout.h

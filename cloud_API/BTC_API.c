@@ -11,12 +11,8 @@
 #include "pin_mux.h"
 #include "clock_config.h"
 #include "userConfig.h"
-
-#include "tools.h"
-#include "stdlib.h"
 #include "globalParams.h"
-#include "apiParams.h"
-#include "flashLayout.h"
+
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -66,7 +62,9 @@ int main(void)
 		if(sys_thread_new("workHandleTheard", workHandle_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
 					LWIP_ASSERT("workHandleTheard(): Task creation failed.", 0);
 		if(sys_thread_new("oneSecondTimerTheard", oneSecondTimer_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
-					LWIP_ASSERT("oneSecondTimerTheard(): Task creation failed.", 0);				
+					LWIP_ASSERT("oneSecondTimerTheard(): Task creation failed.", 0);	
+		if(sys_thread_new("exceptionHandleTheard", exceptionHandle_thread, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
+					LWIP_ASSERT("exceptionHandleTheard(): Task creation failed.", 0);			
 		/* Will not get here unless a task calls vTaskEndScheduler ()*/
   	vTaskStartScheduler();	 		
 }

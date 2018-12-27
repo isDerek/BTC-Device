@@ -1,9 +1,9 @@
 <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html><head>
-<title>Static Call Graph - [.\Objects\cloud_API.out]</title></head>
+<title>Static Call Graph - [.\Objects\BTCI.out]</title></head>
 <body><HR>
-<H1>Static Call Graph for image .\Objects\cloud_API.out</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu Dec 27 09:56:14 2018
+<H1>Static Call Graph for image .\Objects\BTCI.out</H1><HR>
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu Dec 27 10:33:45 2018
 <BR><P>
 <H3>Maximum Stack Usage =        728 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1088,9 +1088,9 @@ Global Symbols
 <P><STRONG><a name="[e9]"></a>CLOCK_BootToPeeMode</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, fsl_clock.o(i.CLOCK_BootToPeeMode))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = CLOCK_BootToPeeMode &rArr; CLOCK_SetPbeMode &rArr; CLOCK_EnablePll0 &rArr; __aeabi_assert &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_assert
+<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_SetExternalRefClkConfig
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_assert
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_SetPbeMode
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_SetExternalRefClkConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BOARD_BootClockRUN
 </UL>
@@ -1134,22 +1134,22 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllRefClkFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOutClkFreq
+<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPllFllSelClkFreq
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOutClkFreq
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFreq
-<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPllFllSelClkFreq
 </UL>
 
 <P><STRONG><a name="[106]"></a>CLOCK_GetFreq</STRONG> (Thumb, 190 bytes, Stack size 16 bytes, fsl_clock.o(i.CLOCK_GetFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = CLOCK_GetFreq &rArr; CLOCK_GetFixedFreqClkFreq &rArr; CLOCK_GetOutClkFreq &rArr; CLOCK_GetFllFreq &rArr; CLOCK_GetFllRefClkFreq &rArr; CLOCK_GetFllExtRefClkFreq &rArr; CLOCK_GetMcgExtClkFreq &rArr; __aeabi_assert &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOutClkFreq
+<BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPllFllSelClkFreq
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOutClkFreq
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOsc0ErClkFreq
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetInternalRefClkFreq
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllFreq
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFixedFreqClkFreq
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetEr32kClkFreq
-<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPllFllSelClkFreq
-<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[211]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_init
 <LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ftm_init
@@ -1176,10 +1176,10 @@ Global Symbols
 <P><STRONG><a name="[fe]"></a>CLOCK_GetOutClkFreq</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, fsl_clock.o(i.CLOCK_GetOutClkFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = CLOCK_GetOutClkFreq &rArr; CLOCK_GetFllFreq &rArr; CLOCK_GetFllRefClkFreq &rArr; CLOCK_GetFllExtRefClkFreq &rArr; CLOCK_GetMcgExtClkFreq &rArr; __aeabi_assert &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllFreq
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllFreq
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetMcgExtClkFreq
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetInternalRefClkSelectFreq
-<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFreq
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFixedFreqClkFreq
@@ -1192,16 +1192,16 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0RefFreq
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_assert
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOutClkFreq
+<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPllFllSelClkFreq
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOutClkFreq
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFreq
-<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPllFllSelClkFreq
 </UL>
 
 <P><STRONG><a name="[107]"></a>CLOCK_GetPllFllSelClkFreq</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, fsl_clock.o(i.CLOCK_GetPllFllSelClkFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = CLOCK_GetPllFllSelClkFreq &rArr; CLOCK_GetFllFreq &rArr; CLOCK_GetFllRefClkFreq &rArr; CLOCK_GetFllExtRefClkFreq &rArr; CLOCK_GetMcgExtClkFreq &rArr; __aeabi_assert &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllFreq
-<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFllFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetFreq
 </UL>
@@ -1920,12 +1920,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PHY_Init
 </UL>
 
-<P><STRONG><a name="[4a]"></a>PORTC_IRQHandler</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, gpio_api.o(i.PORTC_IRQHandler))
+<P><STRONG><a name="[4a]"></a>PORTC_IRQHandler</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, gpio_api.o(i.PORTC_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = PORTC_IRQHandler &rArr; GPIO_ClearPinsInterruptFlags &rArr; GPIO_GetInstance &rArr; __aeabi_assert &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPinsInterruptFlags
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ClearPinsInterruptFlags
-<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(RESET)
 </UL>
@@ -2155,7 +2154,6 @@ Global Symbols
 <LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;erase_sector
 <LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;erase_DefSize
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FTM_updata
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PORTC_IRQHandler
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switchMoudle
 <LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;notifyHandle
 <LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;api_AUTH_Handle
@@ -2205,7 +2203,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOsc0ErClkFreq
+<BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetOsc0ErClkFreq
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetEr32kClkFreq
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_EnablePll0
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetMcgExtClkFreq
@@ -2236,7 +2235,6 @@ Global Symbols
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENET_SetTxBufferDescriptors
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENET_SetRxBufferDescriptors
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_SetPbeMode
-<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetPll0Freq
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC16_SetChannelConfig
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC16_Init
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC16_GetDefaultConfig
@@ -2369,7 +2367,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1ac]"></a>apiHandle</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, workhandle.o(i.apiHandle))
+<P><STRONG><a name="[1ac]"></a>apiHandle</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, workhandle.o(i.apiHandle))
 <BR><BR>[Stack]<UL><LI>Max Depth = 432<LI>Call Chain = apiHandle &rArr; switchMoudle &rArr; RGB_Show &rArr; API_OLED_Clear &rArr; OLED_Set_Pos &rArr; I2C_Write_polling &rArr; I2C_MasterTransferBlocking &rArr; I2C_MasterRepeatedStart &rArr; delay_30ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switchMoudle
